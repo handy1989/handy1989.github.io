@@ -95,6 +95,58 @@ littlewhite            </a>
             </article>
             <hr/>
             <article>
+                <h2><a href="/curl参数说明.html">curl参数说明</a></h2>
+                <div class="summary"><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i/--include</td>
+<td>输出响应包头</td>
+</tr>
+<tr>
+<td>-I</td>
+<td>只获取响应包头</td>
+</tr>
+<tr>
+<td>-x/—proxy <proxyhost[:port]></td>
+<td>设置代理</td>
+</tr>
+<tr>
+<td>-X/—request <command></td>
+<td>设置http method</td>
+</tr>
+<tr>
+<td>-D/—dump-header <file></td>
+<td>输出包头到指定文件</td>
+</tr>
+<tr>
+<td>-H/--header <header></td>
+<td>指定请求包头字段 </br>如果有多个字段，可多次使用本参数</td>
+</tr>
+<tr>
+<td>-d/—data <data></td>
+<td>发送post数据(ascii)</br> curl -d "param1=value1&amp;param2=value2"</td>
+</tr>
+<tr>
+<td>--data-binary <data> </br>—data-binary '@filename'</td>
+<td>发送二进制post数据</br>如果以'@'开头则发送文件内容</td>
+</tr>
+<tr>
+<td>-A/—user-agent <agent string></td>
+<td>设置user-agent</td>
+</tr>
+</tbody>
+</table>
+                    <a class="btn btn-default btn-xs" href="/curl参数说明.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="/http缓存服务器淘汰策略.html">http缓存服务器淘汰策略</a></h2>
                 <div class="summary"><p>根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是</p>
 <ul>
@@ -186,6 +238,9 @@ struct ...</pre></div>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
+<script>
+$("table").addClass("table table-hover");
+</script>
 
 
 </body>
