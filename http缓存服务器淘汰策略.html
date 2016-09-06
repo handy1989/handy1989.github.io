@@ -153,14 +153,14 @@ struct LruList
 </ul>
 <p>模型的关键在于保持队列有序和计算节点vlaue值，假设我们已经有一个模型能满足基本的插入删除等操作，并保持队列有序，我们只需要实现不同的value计算函数即可实现不同的淘汰算法</p>
 <p>以LRU为例，其value计算函数可描述为 </p>
-<p>$$ V_i = LatestRefTime $$</p>
+<div class="math">$$ V\_i = LatestRefTime $$</div>
 <p>即节点最近访问时间，每次访问节点均更新时间，这样新添加和最近被访问的节点优先级最高</p>
 <p>基于这种抽象模型，下面介绍几种其它淘汰策略</p>
 <h2>squid淘汰策略</h2>
 <p>除了LRU以外，squid还实现了另外两种淘汰策略，这两种策略均可减少LRU缓存污染的缺点，并针对资源命中率和资源字节命中率做了优化</p>
 <h3>GDSF</h3>
 <p>GDSF（GreddyDual-Size with Frequency）会同时考虑资源访问频次和资源大小，越小的文件被缓存的可能性越大，因此该算法可提高资源命中率，其value计算函数描述如下</p>
-<p>$$ V_i = F_i * C_i/S_i + L$$</p>
+<div class="math">$$ V\_i = F\_i * C\_i/S\_i + L$$</div>
 <ul>
 <li>\( V_i \) 代表对象\( i \)计算的value值</li>
 <li>\( F_i \) 代表对象的访问频次</li>
@@ -170,7 +170,7 @@ struct LruList
 </ul>
 <h3>LFU-DA</h3>
 <p>LFU-DA（Least Frequently Used with Dynamic Aging）是基于LFU（Least Frequently Used）增加了动态age，它更倾向于缓存被访问频次大的对象，而不论对象大小是多少，因此它可以获得更大的资源字节命中率，其value计算函数描述如下</p>
-<p>$$ V_i = C_i * F_i + L$$</p>
+<div class="math">$$ V\_i = C\_i * F\_i + L$$</div>
 <ul>
 <li>\( V_i \) 代表对象\( i \)计算的value值</li>
 <li>\( F_i \) 代表对象的访问频次</li>
@@ -179,6 +179,63 @@ struct LruList
 </ul>
 <p>当\( C_i \) 取值为1时，该算法等价于在LFU基础上添加动态age</p>
 <p>squid中均有以上两种策略的实现，均采用heap管理，只是提供不同计算value的函数</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div>
             <!-- /.entry-content -->
         </article>
