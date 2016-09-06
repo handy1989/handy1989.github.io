@@ -13,7 +13,7 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="c++实战——多人会话聊天室 "/>
-<meta property="og:url" content="http://localhost:8000/c++实战——多人会话聊天室.html" />
+<meta property="og:url" content="http://handy1989.github.com/c++实战——多人会话聊天室.html" />
 <meta property="og:description" content="无他，但手熟尔 ——《卖油翁》 任何一门编程语言，要想熟练，唯有多练。即便是读了一千本小说，若不自己写文章，也成不了作家，编程技术更是需要日复一日反复练习，我将自己学习C++过程中的练习经历与大家分享，如果能给其他初学者以帮助，那是最让人感到欣慰的，当然，本人也是初学者，不足之处难免，望高手多多指教 功能概述¶ === 多人会话聊天室的练习起源于学习多线程和socket编程，服务端和客户端的大致功能如下： 服务端进程代表一个聊天室，响应多个客户端的请求，客户端以用户名登陆之后，可以发表消息，服务端将消息推送给所有登陆的用户，类似于QQ的讨论组一样的功能 客户端向服务端发起连接，通过特定指令登陆，登陆之后可发表消息。客户端支持的指令包扩 login name, 以name为用户名登陆 look, 查看当前登陆的所有用户 logout, 退出当前用户 quit, 退出客户端 本文所有代码在Ubuntu和Mac OS X上编译运行通过，如果是windows用户不保证能编得过。 项目地址 https://github.com/handy1989/chatserver ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -28,12 +28,12 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
         -->
-        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
+        <link href="http://handy1989.github.com/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://handy1989.github.com/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://handy1989.github.com/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://localhost:8000">Home</a></li>
-                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
-                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
-                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://handy1989.github.com">Home</a></li>
+                            <li ><a href="http://handy1989.github.com/categories.html">Categories</a></li>
+                            <li ><a href="http://handy1989.github.com/tags.html">Tags</a></li>
+                            <li ><a href="http://handy1989.github.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://handy1989.github.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://localhost:8000/c++实战——多人会话聊天室.html"> c++实战——多人会话聊天室  </a></h1>
+    <h1><a href="http://handy1989.github.com/c++实战——多人会话聊天室.html"> c++实战——多人会话聊天室  </a></h1>
     </header>
 </div>
 
@@ -171,10 +171,10 @@
 <time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="http://localhost:8000/categories.html#language-ref">Language</a>
+            <a class="category-link" href="http://handy1989.github.com/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://localhost:8000/tags.html#c-ref">c++
+                <li><a href="http://handy1989.github.com/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
@@ -198,8 +198,8 @@
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
-        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+        <script src="http://handy1989.github.com/theme/js/jquery.min.js"></script>
+        <script src="http://handy1989.github.com/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
