@@ -13,7 +13,7 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="让你的程序更优雅的sleep "/>
-<meta property="og:url" content="http://handy1989.github.com/让你的程序更优雅的sleep.html" />
+<meta property="og:url" content="/让你的程序更优雅的sleep.html" />
 <meta property="og:description" content="sleep的作用无需多说，几乎每种语言都提供了类似的函数，调用起来也很简单。sleep的作用无非是让程序等待若干时间，而为了达到这样的目的，其实有很多种方式，最简单的往往也是最粗暴的，我们就以下面这段代码来举例说明（注：本文提及的程序编译运行环境为Linux） /* filename: test.cpp */ #include &lt;stdio.h&gt; #include &lt;unistd.h&gt; #include &lt;pthread.h&gt; #include &lt;signal.h&gt; class TestServer { public: TestServer() : run_(true) {}; ~TestServer(){}; void Start() { pthread_create(&amp;thread_, NULL, ThreadProc, (void*)this); } void Stop() { run_ = false; } void Wait() { pthread_join(thread_, NULL); } void ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -28,12 +28,12 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
         -->
-        <link href="http://handy1989.github.com/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="http://handy1989.github.com/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://handy1989.github.com/theme/css/custom.css" media="screen">
+        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://handy1989.github.com/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://handy1989.github.com">Home</a></li>
-                            <li ><a href="http://handy1989.github.com/categories.html">Categories</a></li>
-                            <li ><a href="http://handy1989.github.com/tags.html">Tags</a></li>
-                            <li ><a href="http://handy1989.github.com/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://handy1989.github.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://handy1989.github.com/让你的程序更优雅的sleep.html"> 让你的程序更优雅的sleep  </a></h1>
+    <h1><a href="/让你的程序更优雅的sleep.html"> 让你的程序更优雅的sleep  </a></h1>
     </header>
 </div>
 
@@ -408,10 +408,10 @@ int pthread_cond_destroy(pthread_cond_t *cond);
 <time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="http://handy1989.github.com/categories.html#language-ref">Language</a>
+            <a class="category-link" href="/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://handy1989.github.com/tags.html#c-ref">c++
+                <li><a href="/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
@@ -435,8 +435,8 @@ int pthread_cond_destroy(pthread_cond_t *cond);
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="http://handy1989.github.com/theme/js/jquery.min.js"></script>
-        <script src="http://handy1989.github.com/theme/js/bootstrap.min.js"></script>
+        <script src="/theme/js/jquery.min.js"></script>
+        <script src="/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
