@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="zh" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
     <title>http缓存服务器淘汰策略 - littlewhite</title>
@@ -34,13 +33,9 @@
     <link href="/theme/css/pygments/native.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="littlewhite ATOM Feed"/>
 
 
 
-        <link href="/feeds/stnts.atom.xml" type="application/atom+xml" rel="alternate"
-              title="littlewhite stnts ATOM Feed"/>
 
 </head>
 <body>
@@ -104,50 +99,6 @@ littlewhite            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是</p>
-=======
-<html lang="zh">
-<head>
-        <meta charset="utf-8" />
-        <title>http缓存服务器淘汰策略</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-</head>
-
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">littlewhite </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="/category/stnts.html">stnts</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/http缓存服务器淘汰策略.html" rel="bookmark"
-           title="Permalink to http缓存服务器淘汰策略">http缓存服务器淘汰策略</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-09-06T00:00:00+08:00">
-                Published: Tue 06 September 2016
-        </abbr>
-		<br />
-        <abbr class="modified" title="2016-09-06T00:00:00+08:00">
-                Updated: Tue 06 September 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/littlewhite.html">littlewhite</a>
-        </address>
-<p>In <a href="/category/stnts.html">stnts</a>.</p>
-<p>tags: <a href="/tag/stnts.html">stnts</a> </p>
-</footer><!-- /.post-info -->      <p>根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是</p>
->>>>>>> f0dcd91eb69ebae318acd74a42ff0287018e87ab
 <ul>
 <li>内存 -&gt; SSD</li>
 <li>SSD -&gt; 硬盘</li>
@@ -228,7 +179,6 @@ struct LruList
 </ul>
 <p>当\( C_i \) 取值为1时，该算法等价于在LFU基础上添加动态age</p>
 <p>squid中均有以上两种策略的实现，均采用heap管理，只是提供不同计算value的函数</p>
-<<<<<<< HEAD
             </div>
             <!-- /.entry-content -->
         </article>
@@ -301,39 +251,6 @@ struct LruList
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="/theme/js/respond.min.js"></script>
 
-=======
-    </div><!-- /.entry-content -->
-
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
->>>>>>> f0dcd91eb69ebae318acd74a42ff0287018e87ab
 
 </body>
 </html>
