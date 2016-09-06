@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>littlewhite</title><link href="/" rel="alternate"></link><link href="/feeds/skill.atom.xml" rel="self"></link><id>/</id><updated>2016-09-06T00:00:00+08:00</updated><entry><title>Mac OS X重装操作系统</title><link href="/Mac%20OS%20X%E9%87%8D%E8%A3%85%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:Mac OS X重装操作系统.html</id><summary type="html">&lt;p&gt;一个月关一次机，两年都不重装系统，这在Mac上是很正常的事情。但是这只适合于普通的用户，对于爱折腾的人来说，不重装几次系统就好像自己对它爱得不够深一样。我这次也是为了尝鲜，从10.9升级到10.10的测试版，可能是测试版不够稳定，或者因为我是air低配版的原因，系统运行起来比较卡顿，而且借鉴IOS7扁平化的设计图标在电脑上看来实在是太刺眼，10.10的新特性也主要体现在和IOS系统的协同工作上，对于没有IOS设备的我来说，10.10实在是不如稳定的10.9让人舒服，因此我又将系统回滚到了10.9，这次我主要说说系统回滚和重装的问题。&lt;/p&gt;
+&lt;p&gt;这里的重装我们指重新安装同一版本的系统，回滚指从高版本退回到低版本的系统。为什么不说升级？因为升级很简单，直接去App Store下载最新的系统就行。&lt;/p&gt;
+&lt;p&gt;不管是哪种安装方式，主要有三个途径&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;通过Time Machine恢复&lt;/li&gt;
+&lt;li&gt;在线重装&lt;/li&gt;
+&lt;li&gt;自制U盘安装。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;通过Time Machine恢复&lt;/h3&gt;
+&lt;p&gt;这种方式是Mac的特色。Time Machine是Mac用来备份系统和文件的工具，当然，你需要有一个足够大的硬盘，在你第一次通过Time Machine备份系统时，它会将整个系统全部备份到指定硬盘上，第一次会比较耗时，比如我第一次备份总量是80G，花了一晚上还没备份好，最后甚至将移动硬盘分区表写坏了。所以建议刚买电脑的时候就备份一次，后续都可以增量备份，我重装之后备份50G只花了两个小时左右。Time Machine翻译过来叫时间机器，既然如此称呼，当然不只是有备份系统这样简单的功能，由于它是增量备份，每次备份时它都可以根据增量的内容建立快照，在你恢复系统时可以选择任意一个备份时间点，就好比乘坐时间机器可以回到过去任何时刻&lt;/p&gt;
+&lt;p&gt;通过Time Machine恢复系统的方式很简单，开机时按住CMD+R键不放，进入系统安装界面，里面有“通过Time Machine恢复系统”选项，直接选择就行。&lt;/p&gt;
+&lt;p&gt;这种方式既可以重装又可以回滚，取决于你Time Machine备份的系统版本，如果你用Time Machine备份的是低版本的系统，那么就会回滚到系版本&lt;/p&gt;
+&lt;h3&gt;在线安装&lt;/h3&gt;
+&lt;p&gt;这也是Mac有别于windows的地方，由于10.9是免费系统，因此苹果提供了在线安装的功能，如果你不小心将系统弄坏了，而且也没有用Time Machine备份，制作U盘启动盘安装又太麻烦，那么你可以选择这种方式。&lt;/p&gt;
+&lt;p&gt;同样是开机时按住CMD+R键不放，直到进入系统安装界面，有一个选项是通过网络安装系统，这时你需要先连接WiFi，根据我的经历，貌似此时是无法连接以太网的，也就是说插网线不能联网，所以最好是用WiFi，连上WiFi之后根据提示安装即可。&lt;/p&gt;
+&lt;p&gt;这种安装方式是不能回滚到，比如我是10.10系统，通过这种方式安装的还是10.10系统，这样安装之后只会替换系统文件，用户文件还会是原来的样子。&lt;/p&gt;
+&lt;h3&gt;自制U盘安装&lt;/h3&gt;
+&lt;p&gt;和windows一样，Mac也可以通过自制U盘启动盘来安装系统，这种安装方式是最复杂的，不过也是最随心所欲的，你可以升级、回滚、重装，都可以，在通过这种方式安装时，请严格安装下面的步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;制作U盘启动&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;首先你需要一个至少8G的U盘，不过最好是用移动硬盘，可以给移动硬盘分一个10G左右的分区，将其制作成启动盘，一般来说移动硬盘的速度是快于U盘的。打开磁盘工具（Mac自带的），选中你要制作的分区（如果是U盘，只有一个分区，如果是移动硬盘可以自己先进行分区），点击“抹点”标签，格式选择“Mac OS扩展”，名称填Mavericks（这个名字后面会用到）点击抹掉，此时分区被格式化为指定格式，这种格式只有Mac能识别，windows是不识别的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载系统安装包，对于不同版本的制作方式也不同，由于我制作的是10.9的系统，这里也以此为例，下载地址为 &lt;a href="http://pan.baidu.com/s/1hqDrQSG"&gt;http://pan.baidu.com/s/1hqDrQSG&lt;/a&gt;，如果直接下载貌似速度比较慢，通过百度云管家下载会快一些，但是百度云管家只有windows版本的，所以身旁如果有windows电脑可以先用windows电脑下载好再拷贝到Mac上&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同时选中两个文件，双击解压，得到一个dmg后缀的文件，双击dmg文件，此时文件被挂载到了Mac上，通过Finder左侧的设备可以看到。怎么查看挂载的目录呢，打开终端软件，输入df -h，可以查看系统所有挂载的设备，最后一列是设备挂载的路径，相信聪明的你一定可以判断哪个路径对应哪个设备（一般通过名字和Size、Used等特征判断），此时确保U盘和系统安装包都被挂载了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开终端软件，输入如下命令，其中有几个地方是需要替换成你自己的路径的&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo /Volumes/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Mavericks --applicationpath /Volumes/Install\ OS\ X\ Mavericks.app --nointeraction
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这条命令的意思是，通过路径为/Volumes/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia的程序，将文件/Volumes/Install\ OS\ X\ Mavericks.app安装到设备/Volumes/Mavericks中，其中/Volumes/Install\ OS\ X\ Mavericks.app是挂载的系统安装包，/Volumes/Mavericks是挂载的U盘（前面提到过，在抹掉时命名为Mavericks），将这几个替换成自己对应的路径就可以，注意，如果文件名里有空格，前面是要加反斜杠“\”的&lt;br /&gt;
+回车之后等待一会儿，U盘启动器就安装成功了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从U盘启动系统&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;重启电脑，开机时按住option键不放，直到进入磁盘选择界面，选择你自己的磁盘&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;之后会进入一个界面，有“通过Time Machine恢复”，“安装OS X”等选项，此时你有两个选择&lt;/p&gt;
+&lt;p&gt;1、通过菜单栏的磁盘工具抹掉系统硬盘，磁盘工具的使用和制作U盘启动时一样，将系统盘抹掉，格式化为Mac OS扩展格式。然后选择“安装OS X”，将系统安装到抹掉的硬盘里。此种方式会删除所有数据&lt;br /&gt;
+2、直接点击“安装Os X”，将U盘里的系统安装到系统盘上，这种方式是覆盖安装，只会替换系统文件，用户文件还在&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上三种方式分别对应不同的场景需求，最简单也最保险的当然是通过Time Machine备份系统，所以在此也提醒各位在升级系统前一定要备份，否则你将尝到无尽折腾的味道。另外，由于Time Machine无法选择部分文件备份，觉得备份太慢且只想备份部分文件或软件时，可以自己用移动硬盘拷贝，由于Mac下的软件都类似于Windows下的绿色软件，也就是说你将/Applications目录下的软件考走，放到另一台Mac的/Applications目录下，一样是可以运行的，所以你可以像拷贝文件一样将软件拷贝的移动硬盘，重装系统后再将软件拷贝到/Applications下即可，这种方式经本人试验大部分软件都可用。&lt;/p&gt;
+&lt;p&gt;最后为这几天的折腾总结一下：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;没事别折腾系统&lt;/li&gt;
+&lt;li&gt;就算要折腾系统，也一定要用Time Machine先备份&lt;/li&gt;
+&lt;li&gt;如果没有备份，且将系统折腾死了，那你就只能看这篇文章了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The end...&lt;/p&gt;</summary></entry><entry><title>Mac必备软件推荐</title><link href="/Mac%E5%BF%85%E5%A4%87%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:Mac必备软件推荐.html</id><summary type="html">&lt;p&gt;随着IOS的流行，Mac电脑也越来越多的进入人们的视野，和iPhone系列一样，苹果的Mac产品线也是软硬件完美结合，有着非同凡响的使用体验，而这主要的功劳，当属其操作系统Mac OS X，今天就来推荐一些Mac必备软件&lt;/p&gt;
+&lt;p&gt;首先要声明一点，OS X系统的很多软件和IOS一样，都是收费的，国人惯用了微软的盗版系统和大量windows盗版软件，转到Mac平台会有少许不适，当然Mac平台也有破解版软件，但本着程序员的良心，本文不会贴出破解软件的下载链接，对于收费软件也会专门指出，经济条件允许的同学，希望能多多支持正版。我主要是站在程序员的角度推荐软件，所以像QQ、搜狗输入法之类的日常软件不在推荐之列，当然，有些软件也适合普通用户，而且是强烈推荐，希望读者能各取所需&lt;/p&gt;
+&lt;h2&gt;必备&lt;/h2&gt;
+&lt;h3&gt;Alfred&lt;/h3&gt;
+&lt;p&gt;用神器来形容这款软件一点都不为过，至少我在windows平台还没用过让我这么舒适的软件  &lt;/p&gt;
+&lt;h4&gt;功能介绍&lt;/h4&gt;
+&lt;p&gt;初级功能：搜索并打开软件与文件&lt;br /&gt;
+高级功能：自定义搜索、通过插件实现特殊功能&lt;/p&gt;
+&lt;p&gt;Alfred的唤出方式为option+空格，下面的所有操作都是先按option+空格再输入的。Alfred的设计理念是将所有操作都集中到一个入口，这个很类似Linux的shell命令，不管你在任何目录下，所有系统命令都可以通过命令行输入使用，这可以省去你大量的查找和定位时间&lt;/p&gt;
+&lt;h4&gt;搜索软件&lt;/h4&gt;
+&lt;p&gt;有了Alfred，你不用去整理安装过的软件，只要你记得它的名字，或者哪怕是一个字母，都可以快速定位并打开软件，比如我要打开QQ，输入qq，它就会给我这样的选项&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/alfred_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;通过方向键选择软件，回车可以打开选中的软件，或者通过&lt;code&gt;cmd+数字&lt;/code&gt;打开对应的软件，它会根据你每次的选择来自动对结果进行排序，因为我经常通过这种方式打开企业QQ，而我的QQ是直接在dock栏打开，所以企业QQ会排在QQ的前面，另外，它搜索软件时会通过两种方式进行匹配，一种是软件名，一种是软件对应的文件名，比如企业QQ的软件名是“企业QQ”，而它的文件名是"EIM.app"，这两种方式都可以用来定位并且对中文支持良好&lt;/p&gt;
+&lt;h4&gt;搜索文件&lt;/h4&gt;
+&lt;p&gt;搜索文件的方式大同小异，先输入空格，默认就会搜索文件，比如我输入&lt;code&gt;空格+python&lt;/code&gt;就会有如下的搜索结果，回车打开文件，cmd+回车打开Finder进入文件所在目录&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/alfred_2.png" /&gt;&lt;/p&gt;
+&lt;h4&gt;自定义网页搜索&lt;/h4&gt;
+&lt;p&gt;接下来我要推荐它的自定义搜索功能，先看图&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/alfred_3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;这里我输入&lt;code&gt;jd iphone&lt;/code&gt;，回车之后就会跳转到京东的iphone搜索页面，也就是这个链接&lt;a href="http://search.jd.com/Search?keyword=iphone&amp;amp;enc=utf-8"&gt;http://search.jd.com/Search?keyword=iphone&amp;amp;enc=utf-8&lt;/a&gt;，这里用到了Alfred的web search功能，这需要自己进行配置，配置方式也很简单，打开Alfred的配置界面（&lt;code&gt;option+空格&lt;/code&gt;打开Alfred，&lt;code&gt;cmd+,&lt;/code&gt;打开配置项），在feature菜单中选择web search一项，点击右下角的Add Custom Search，按下图配置&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/alfred_5.png" /&gt;&lt;/p&gt;
+&lt;p&gt;最重要的是Search URL一栏，前面已经说过，京东搜索关键词iphone的链接是&lt;a href="http://search.jd.com/Search?keyword=iphone&amp;amp;enc=utf-8"&gt;http://search.jd.com/Search?keyword=iphone&amp;amp;enc=utf-8&lt;/a&gt;，这里我们只需要将链接中的iphone替换成{query}即可，这个链接是怎么发现的呢，很简单，你打开京东，随便输入一个关键词进行搜索（最好是搜英文，中文在URL中会被转码），看一下你输入的词在URL中的哪个地方，替换成{query}就可以了，下图是我自定义的一些搜索以及对应的链接&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/alfred_4.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;京东   ：http://search.jd.com/Search?keyword={query}&amp;amp;enc=utf-8
+百度   ：http://www.baidu.com/s?wd={query}  
+bt天堂 ：http://www.bttiantang.com/s.php?q={query}  
+豆瓣电影：http://movie.douban.com/subject_search?search_text={query}  
+淘宝   ：http://s.taobao.com/search?q={query}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;有了这个，你就可以在任何界面下快速进行搜索，比如你在看一个PDF文档发现一个专有名词想用百度搜索，这时你无须打开浏览器进入百度再输入关键词，而是&lt;code&gt;option+空格&lt;/code&gt;打开Alfred，输入&lt;code&gt;bd 你想要的balabala&lt;/code&gt;就可以快速搜索&lt;/p&gt;
+&lt;p&gt;以上功能都是免费的！应付日常使用完全够了，如果想用高级功能，比如通过编写插件完成更复杂的动作，就需要升级到专业版，个人觉得免费版就已经够用了，除非你想深入研究这个东东的使用&lt;/p&gt;
+&lt;h2&gt;效率&lt;/h2&gt;
+&lt;h3&gt;BetterTouchTool&lt;/h3&gt;
+&lt;p&gt;这是一款免费软件，可以自定义触摸板和鼠标操作，添加操作的步骤如下&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/BetterTouchTool_1.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. 选择操作的对象，可以对Magic Mouse，触摸板等进行操作
+2. 选择动作执行的对象，可以是全局动作，也可以是针对某个应用的动作
+3. 添加手势
+4. 选择手势
+5. 选择映射的快捷键或操作，二选一
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这个软件全是英文说明，需要一点耐心来看，不过都是一些简单句子，相信英语过了四级的理解起来完全无压力。通过上图可以看到，我在全局范围添加了两个手势，分别轻按触摸板顶部中间位置和底部中间位置可以滚动到页面顶部或底部，滚动到页面顶部或底部是我在windows浏览器上最常用的鼠标手势，Mac下虽然没有那些浏览器插件和鼠标可用，但是通过这种方式我们可以实现同样的功能，甚至更加强大，这个动作是对所有软件都有效的！&lt;/p&gt;
+&lt;p&gt;同理，我们也可以对MagicMouse进行设置，注意必须是苹果的MagicMouse，普通鼠标是不支持的。MagicMouse的动作和触摸板会有所不同，细节就不说了，总之你可以将常用的操作全部集成到鼠标上，那时你就会明白为什么MagicMouse叫做MagicMouse。不了解MagicMouse的人会吐槽它很难用，了解的人只会暗自偷笑&lt;/p&gt;
+&lt;p&gt;另外，在Basic Settings标签下，建议将左下角的Enable Windows Snapping勾选上，这样可以实现和win7类似的将软件窗口拖到屏幕顶端实现放大的功能，除此之外，你还可以试试将软件窗口拖到屏幕左边、右边以及四个角落，看看是什么效果&lt;/p&gt;
+&lt;h3&gt;AppClean&lt;/h3&gt;
+&lt;p&gt;轻量级的卸载软件的工具，在windows下如果要卸载软件该如何操作？通过控制面板？那个太高端，很多普通用户都不会使用。通过360安全卫士？拜托，那简直就是一个杂货店，我只想要一瓶啤酒，它非得送我一包卫生纸。Mac下完全不需要像360安全卫士这样臃肿的软件，Unix软件设计的宗旨是只干一件事并做到极致，实现软件卸载，只需要AppClean就可以了&lt;/p&gt;
+&lt;p&gt;通过Alfred启动软件（现学现用嘛，option+空格唤出Alfred，输入cleaner，回车打开软件），如下图  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/AppCleaner_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;它的搜索功能颜色比较淡，我好长时间才发现，通过搜索找到你要卸载的软件，或者直接在列表里找到，勾选之后点击右下角的Search按键，它会搜索出软件相关的目录，点击delete，搞定！&lt;/p&gt;
+&lt;p&gt;是不是觉得简单的不可思议，印象中windows下卸载一个软件得花老半天，其实卸载软件无非就是删除文件，在Mac下，软件包含的文件被有规律的组织在一起，这使得安装和卸载都变得异常简单&lt;/p&gt;
+&lt;p&gt;最后需要注意一点，AppCleaner的搜索功能只能对软件的文件名进行搜索，对于有些软件名和文件名不一致的，输入软件名是搜不到的，比如企业QQ的文件名是EIM.app，只能通过搜索EIM找到软件，或者浏览软件列表选中，至于怎么通过软件名得到文件名，试试Alfred：）&lt;/p&gt;
+&lt;h3&gt;PhoneClean&lt;/h3&gt;
+&lt;p&gt;如果想深度清理系统垃圾，就需要用到这个软件，收费软件，这里不做过多介绍，使用起来非常容易&lt;/p&gt;
+&lt;h3&gt;AndroidFileTransfer&lt;/h3&gt;
+&lt;p&gt;浏览安装设备文件，无须多言&lt;/p&gt;
+&lt;h3&gt;Windows Phone&lt;/h3&gt;
+&lt;p&gt;同步WP设备文件，无须多言&lt;/p&gt;
+&lt;h2&gt;开发&lt;/h2&gt;
+&lt;p&gt;前面推荐的软件是适用于所有用户的，所以讲的比较详细，有些还贴出了使用步骤截图，下面介绍专门针对程序员的软件，由于程序员都有极强的动手能力和好奇心，所以下面的软件介绍都一笔带过，只做推荐，不做详解&lt;/p&gt;
+&lt;h3&gt;Xcode&lt;/h3&gt;
+&lt;p&gt;IOS开发必备，即便不做IOS开发，也建议安装，它就像windows下的VS，可能其它软件使用时会依赖它，所以强烈建议安装，AppStore可免费下载&lt;/p&gt;
+&lt;h3&gt;iTerm&lt;/h3&gt;
+&lt;p&gt;终端模拟程序，虽然Mac自带Terminal程序，但这个更带感配置也更丰富，光看这个透明背景就让人醉了，更重要的是它是免费的！&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/20141011/iterm_1.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;MacVim&lt;/h3&gt;
+&lt;p&gt;vim的GUI版，Mac专有，完美兼容vim所有插件以及语法，vim遇到Mac，是我用过的最好的编辑器！&lt;/p&gt;
+&lt;p&gt;想要最大发挥它的威力，前提是你必须是一个Vimer，建议先熟练使用vim后再转到MacVim&lt;/p&gt;
+&lt;h3&gt;Homebrew&lt;/h3&gt;
+&lt;p&gt;二进制包管理工具，类似Ubuntu的apt-get和CentOS的yum。可以通过它安装很多Mac没提供或提供了但不好使的UNIX软件，比如ctags，wget，git等  &lt;/p&gt;
+&lt;p&gt;官网可下载&lt;a href="http://brew.sh"&gt;http://brew.sh&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;安装brew&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ruby -e &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通过brew安装软件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew install wget
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;brew -h&lt;/code&gt;查看详细使用说明&lt;/p&gt;
+&lt;h3&gt;DiffMerge&lt;/h3&gt;
+&lt;p&gt;文件/目录比较工具。虽然vim很强大，也可提供文件比较功能，但这种场景下图形界面会更直观&lt;/p&gt;
+&lt;h3&gt;Mou&lt;/h3&gt;
+&lt;p&gt;最后登场的是Mou，免费软件，基于Markdown语法的编辑器，我觉得我有必要专门花一篇文章来讲它，原因只有一个，我的所有博客都是用它来写的！但，今天就到这里了&lt;/p&gt;
+&lt;p&gt;EOF&lt;/p&gt;</summary></entry><entry><title>Vim c++开发环境插件安装详解</title><link href="/Vim%20c++%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E8%AF%A6%E8%A7%A3.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:Vim c++开发环境插件安装详解.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;C/C++是使用比例最高的程序语言，而vim是专为程序员开发的编辑器，当这两者结合起来，会给我们带来怎样的效果呢。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对于windows上做C++开发的用户来说，vs为他们做了大量的工作，语法高亮、自动缩进、智能提示等等，当你happy的使用vs时，请记住一点，这是一个收费软件，虽然在我大中华普遍都在使用微软的盗版软件，但作为程序员我们心里应该知道这是不对的行为，然后再去——等等，我们今天讨论的不是这个话题，我们要说的是Linux下的免费软件vim！&lt;/p&gt;
+&lt;p&gt;vim插件安装的教程在互联网上已经数不胜数，但是质量也参差不齐，很多都是在其它地方转载copy，而且没有注明使用环境，很多人安装时发现无法work，最后搞得一团糟，今天这篇文章的宗旨只有两个：1、使得安装简单；2、保证可以用。&lt;/p&gt;
+&lt;p&gt;阅读这篇文章的前提是你至少使用过vim，知道基本的操作。下面就开始进入主题。&lt;/p&gt;
+&lt;h2&gt;安装环境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CentOS release 6.3 (Final)&lt;/li&gt;
+&lt;li&gt;VIM 7.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文的插件安装均在以上环境中进行，顺带也会提一下其它平台的安装方式。&lt;/p&gt;
+&lt;h2&gt;准备工作&lt;/h2&gt;
+&lt;p&gt;由于大多数vim插件都可以在github上找到，而且通过git安装、删除、升级插件都异常简单，因此我们需要首先安装git工具，如果不知道git和github，可以先自行Google&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;centos安装&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo yum install git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;ubuntu安装&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Mac安装&lt;/strong&gt;
+由于Mac没有像yum和apt-get一样的包管理工具，需要先安装一个类似的包管理工具，这对于安装一些Linux命令是非常有帮助的&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装包管理工具&lt;a href="http://brew.sh/"&gt;homebrew&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ruby -e &amp;quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过brew安装git&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;brew install git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我将本文需要安装的插件和配置文件都放在了github上，如果你不想大费周折的了解每个插件的安装方式，可以直接下载所有插件即可使用，项目地址&lt;a href="https://github.com/handy1989/vim"&gt;https://github.com/handy1989/vim&lt;/a&gt;，可以按照如下命令备份并一次安装所有插件（注意，从git上下载的vim目录下都是隐藏文件，&lt;code&gt;ls -a&lt;/code&gt;可以查看）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mv ~/.vimrc ~/.vimrcbak
+mv ~/.vim ~/.vimbak
+git clone https://github.com/handy1989/vim.git
+mv vim/.vimrc ~/.vim ~/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;第一个插件&lt;/h2&gt;
+&lt;p&gt;为了不让插件安装后目录显得凌乱，我们很有必要安装一个管理插件的插件，这样功能的插件有好几个，这里只推荐一个&lt;strong&gt;pathogen&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;
+&lt;a href="https://github.com/tpope/vim-pathogen"&gt;https://github.com/tpope/vim-pathogen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;
+可以通过git安装，也可以直接下载插件文件，由于这个插件只有一个文件，我们选择后者，而该插件的说明文档上也是用的这种方法。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/.vim/autoload ~/.vim/bundle &amp;amp;&amp;amp; 
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后，就没有然后，这个插件就安装完了。是不是觉得so easy! 不过先别急，我们还要对插件进行一些配置，用vim打开~/.vimrc，输入如下三行类容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;execute pathogen#infect()
+syntax on
+filetype plugin indent on
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;保存退出，这个插件的安装配置就完成了，怎么验证插件有没有生效呢，别急，后面有的是机会验证。我们先来讲讲vim插件是个什么东西。&lt;/p&gt;
+&lt;p&gt;此时你的~/.vim目录结构应该是这样的&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;├── autoload
+│   └── pathogen.vim
+└── bundle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可见~/.vim目录下是有两个目录，其中autoload放的是pathogen插件，所谓的插件其实就是一个脚本，当vim启动时，它会自动加载~/.vim/autoload目录下的脚本，由于你~/.vimrc里配置了&lt;code&gt;execute pathogen#infect()&lt;/code&gt;，所以它会去自动的执行脚本里这个函数，至于这个函数是怎么实现的，我们不用管它，总之这个函数的功能就是去加载~/.vim/bundle目录下你安装的所有插件，pathogen的管理方法大致就是这样，而我们也看到，vim的插件其实就是一个脚本文件，丰富一点的还会带有说明文档等其它内容，后面我们碰到了再讲解。&lt;/p&gt;
+&lt;h2&gt;auto-pairs&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;
+&lt;a href="https://github.com/jiangmiao/auto-pairs"&gt;https://github.com/jiangmiao/auto-pairs&lt;/a&gt;（感兴趣的可以看）  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能&lt;/strong&gt;
+自动匹配括号、引号等  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git://github.com/jiangmiao/auto-pairs.git ~/.vim/bundle/auto-pairs
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就将auto-pairs在github上的项目文件下载到了~/.vim/bundle/auto-pairs目录下&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;
+随便打开一个文件，输入左括号'('，看右括号是不是自动出现了，然后删除左括号，看右括号是不是也被删除了。当然功能远不止这些，但常用的就这几点。&lt;/p&gt;
+&lt;h2&gt;NERDTree&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;
+&lt;a href="https://github.com/scrooloose/nerdtree"&gt;https://github.com/scrooloose/nerdtree&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能&lt;/strong&gt;
+显示目录树 &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;此时~/.vim/bundle/nerdtree下应该有如下几个目录和文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;autoload
+doc
+lib
+nerdtree_plugin
+plugin
+README.markdown
+syntax
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这几个目录是vim默认的插件目录，如果我们不是通过pathogen加载插件，就需要在~/.vim目录下创建对应的这几个目录，并将NERDTree对应的文件拷到相应的目录，这样每个目录下会放置多个插件的内容，比如~/.vim/doc下就会放置所有插件的帮组文档，而我们通过pathogen来管理，每个插件的所有内容都放在同一个目录中，比如这里的NERDTree插件的内容我们下载到了~/.vim/bundle/nerdtree下，直接删除这个目录即可删除插件，如果后续插件有更新，在该目录下通过git命令也可以很容易更新到最新版本。&lt;br /&gt;
+打开vim，在命令行模式下输入:Helptags载入插件的帮组文档，或者用:helptags help_dir载入指定目录的帮组文档，其中help_dir是你需要加载的插件帮组文档所在的目录，比如这里是~/.vim/bundle/nerdtree/doc&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;
+用vim打开一个文件，在命令行模式下输入:NERDTree，然后回车，窗口左侧就出现了vim工作目录的目录树，如下图所示
+&lt;img alt="" src="http://littlewhite.us/pic/nerdtree.png" /&gt;  &lt;/p&gt;
+&lt;p&gt;将光标置于NERDTree窗口，按'?'可查看帮助，NERDTree的操作很简单，通常是将光标置于一个目录/文件上，通过一个按键来操作，下面列出几个常用按键及其对应的操作&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;文件相关操作
+o  : 在光标所在的上一个窗口打开文件，并将光标置于新打开的窗口
+go : 预览文件，光标停留在NERDTree窗口中
+t  : 在新标签中打开文件并激活
+gt : 在新标签打开文件，光标留在NERDTree窗口中
+i  : 水平分割打开文件
+gi : 水平分割预览
+s  : 垂直分割打开文件
+gs : 垂直分割预览
+
+目录树相关操作
+o  : 展开/关闭目录
+O  : 递归展开目录。慎用，如果目录层级多，打开会很慢
+x  : 关闭父目录
+C  : 切换光标所在目录为根目录
+u  : 切换目录树的根目录为上层目录
+U  : 切换目录树的根目录为上层目录，并保持旧的目录树的状态
+r  : 刷新当前目录
+R  : 刷新当前根目录（这个在新加入文件后会用到）
+cd : 切换vim工作目录为光标所在目录（命令模式下:pwd可查看当前工作目录）
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;为了方便打开NERDTree，我们可以设置快捷键，打开~/.vimrc，插入如下一行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;map &amp;lt;C-n&amp;gt; :NERDTree&amp;lt;CR&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样，当打开vim时，只要输入ctrl+n即可打开NERDTree&lt;/p&gt;
+&lt;h2&gt;MiniBufExplorer&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;
+&lt;a href="http://www.vim.org/scripts/script.php?script_id=159"&gt;http://www.vim.org/scripts/script.php?script_id=159&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能&lt;/strong&gt;
+显示已打开的buffer&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;
+以6.3.2版本为例，根据项目地址可以找到对应版本的下载链接&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/.vim/bundle/minibufexplorer/plugin &amp;amp;&amp;amp; wget &amp;quot;http://www.vim.org/scripts/download_script.php?src_id=3640&amp;quot; -O ~/.vim/bundle/minibufexplorer/plugin/minibufexpl.vim
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;
+用vim打开一个文件，此时看不到minibufexplorer窗口，因为默认是只有一个buffer时不显示窗口的，在命令行模式下通过&lt;code&gt;:vsp filename&lt;/code&gt;打开另一个文件（或者用NERDTree浏览打开其它文件），看看此时窗口上方是不是出现了MiniBufExplorer的窗口，如下所示
+&lt;img alt="" src="http://littlewhite.us/pic/minibufexplorer.png" /&gt;&lt;/p&gt;
+&lt;p&gt;我们先来解释一下什么叫buffer，vim为每个打开的文件都创建了一个buffer，这个buffer存储在内存中，为了下次打开文件时快速加载，比如我们通过NERDTree浏览并打开了多个文件，即便某些文件你退出了编辑，它的buffer仍旧是存在的，在命令模式下，我们输入&lt;code&gt;:ls&lt;/code&gt;可以查看打开的buffer列表，每一行前面的数字对应buffer的编号，通过输入&lt;code&gt;:b N&lt;/code&gt;，其中N代表buffer编号，可以打开对应的buffer。对应上面的截图，我们打开了两个文件，此时minibufexplorer窗口显示有两个buffer，即便我们关闭一个文件，这两个buffer仍然存在，将光标移到某个buffer的名称上，回车可打开对应的buffer，按&lt;code&gt;d&lt;/code&gt;可删除buffer，具体的操作可以直接阅读插件文件，路径为~/.vim/bundle/minibufexplorer/plugin/minibufexpl.vim&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置&lt;/strong&gt;
+在~/.vimrc文件中加入如下命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let g:miniBufExplMaxSize = 2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;该配置含义为minibufexplorer窗口最大高度为2行，默认是没有上限的，你打开的buffer足够多，一会一直增长下去，为了方便阅读我一般将它设为2，其它配置不怎么用到，需要用的时候可以参考插件文件，并在~/.vimrc中添加配置&lt;/p&gt;
+&lt;h2&gt;ctags+taglist+omnicppcomplete&lt;/h2&gt;
+&lt;p&gt;接下来就到了重磅戏了，前面还只是一些窗口相关的基本操作，是为了方便浏览文件，我们阅读C++代码时希望能快速定位函数、变量，类似于VS等其它IDE提供的功能&lt;/p&gt;
+&lt;h3&gt;ctags&lt;/h3&gt;
+&lt;p&gt;这个并不是插件，而是可执行程序，是用来对代码建索引，方便查找的，有些Linux版本是自带ctags的，如果没有，按如下方式安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo yum install ctags
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ubuntu安装方式&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install ctags
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;mac也是自带ctags的，但是那个不好用，可以重新安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;brew install ctags
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果安装失败，看是不是因为/usr/bin/ctags文件已经存在，可以先mv走，然后再执行&lt;/p&gt;
+&lt;p&gt;创建索引：在你代码的根目录执行如下命令，会生成一个tags文件，此时在代码根目录下打开一个文件（vim默认只加载工作目录下的tags文件），将光标置于一个函数或结构体名字上，按&lt;code&gt;ctr+]&lt;/code&gt;即可跳转到该名称的定义处，如果出现多个选项，可以输入编号选择对应跳转的地方，按&lt;code&gt;ctr+o&lt;/code&gt;可回到光标之前的位置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;taglist&lt;/h3&gt;
+&lt;p&gt;taglist是vim的一个插件，可以将代码内的函数、变量等按规律列出来，方便查找&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;下载地址&lt;/strong&gt;
+&lt;a href="http://www.vim.org/scripts/script.php?script_id=273"&gt;http://www.vim.org/scripts/script.php?script_id=273&lt;/a&gt;，或者直接按如下方式下载并安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.vim/bundle &amp;amp;&amp;amp; wget &amp;quot;http://www.vim.org/scripts/download_script.php?src_id=19574&amp;quot; -O taglist.zip &amp;amp;&amp;amp; unzip taglist.zip -d taglist
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就生成了~/.vim/bundle/taglist目录，该目录的结构为&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;taglist
+├── doc
+│   └── taglist.txt
+└── plugin
+    └── taglist.vim
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中plugin目录下为插件文件，doc目录下为说明文档。打开vim，在命令行模式下输入&lt;code&gt;:helptags ~/.vim/bundle/taglist/doc&lt;/code&gt;可以加载说明文档，然后输入&lt;code&gt;help taglist.txt&lt;/code&gt;则可以显示说明文档&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置&lt;/strong&gt;
+打开~/.vimrc，输入如下内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;let Tlist_Show_One_File=1    “ 只展示一个文件的taglist
+let Tlist_Exit_OnlyWindow=1  “ 当taglist是最后以个窗口时自动退出
+let Tlist_Use_Right_Window=1 &amp;quot; 在右边显示taglist窗口
+let Tlist_Sort_Type=&amp;quot;name&amp;quot;   “ tag按名字排序
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这几行配置看名字就能知道什么意思，引号后边是说明，在vim配置文件里，双引号代表注释，类似于C语言里的/&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;
+打开一个文件，在命令行模式下输入&lt;code&gt;:TlistToggle&lt;/code&gt;即可显示taglist窗口，配合NERDTree一起效果如下
+&lt;img alt="" src="http://littlewhite.us/pic/taglist.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;OmniCppComplete&lt;/h3&gt;
+&lt;p&gt;这是一个对C++进行语法补全的插件，可以对函数、命名空间、类成员等进行补全，使用起来和绝大多数IDE差不多，不一样的是IDE为你做了很多你不知道的事情，而omni补全需要依赖tags文件，需要你用ctags命令自己生成&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;下载地址&lt;/strong&gt;
+&lt;a href="http://www.vim.org/scripts/script.php?script_id=1520"&gt;http://www.vim.org/scripts/script.php?script_id=1520&lt;/a&gt;&lt;br /&gt;
+也可用如下命令直接下载并安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.vim/bundle &amp;amp;&amp;amp; wget &amp;quot;http://www.vim.org/scripts/download_script.php?src_id=7722&amp;quot; -O omnicppcomplete.zip &amp;amp;&amp;amp; unzip omnicppcomplete.zip -d omnicppcomplete
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;该命令会生成~/.vim/bundle/omnicppcomplete目录，目录结构为&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;├── after
+│   └── ftplugin
+│       ├── cpp.vim
+│       └── c.vim
+├── autoload
+│   └── omni
+│       ├── common
+│       │   ├── debug.vim
+│       │   └── utils.vim
+│       └── cpp
+│           ├── complete.vim
+│           ├── includes.vim
+│           ├── items.vim
+│           ├── maycomplete.vim
+│           ├── namespaces.vim
+│           ├── settings.vim
+│           ├── tokenizer.vim
+│           └── utils.vim
+└── doc
+    └── omnicppcomplete.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;打开vim，在命令行模式下输入&lt;code&gt;:helptags ~/.vim/bundle/omnicppcomplete/doc&lt;/code&gt;即可加载说明文档，输入&lt;code&gt;:help omnicppcomplete&lt;/code&gt;查看说明文档&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置&lt;/strong&gt;
+打开~/.vimrc文件，输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;filetype plugin indent on
+set completeopt=longest,menu
+let OmniCpp_NamespaceSearch = 2     &amp;quot; search namespaces in the current buffer   and in included files
+let OmniCpp_ShowPrototypeInAbbr = 1 &amp;quot; 显示函数参数列表
+let OmniCpp_MayCompleteScope = 1    &amp;quot; 输入 :: 后自动补全
+let OmniCpp_DefaultNamespaces = [&amp;quot;std&amp;quot;, &amp;quot;_GLIBCXX_STD&amp;quot;]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;
+前面说过，omni插件的补全是依赖于tags文件的，因此需要我们手动建立tags文件，假设现在有两个文件hello.h和hello.cpp如下
+&lt;img alt="" src="http://littlewhite.us/pic/omni_hello.png" /&gt;&lt;br /&gt;
+我们在和这两个文件所在的目录输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就生成了tags文件，然后我们打开main.cpp来测试，当输入hello.h和hello.cpp中的函数或结构体时，通过按&lt;code&gt;ctr+x ctr+o&lt;/code&gt;就可以自动补全了，效果如下&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/omni_main.png" /&gt;  &lt;/p&gt;
+&lt;p&gt;通过按ctr+n和ctr+p可以对候选项进行上下选择。通过这种方式可以实现对函数、结构体的补全&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对STL补全&lt;/strong&gt;
+上面的方式只能对自己的代码进行补全，是当我们要使用其它库比如STL甚至是第三方库时就无法补全，原因很简单，我们只对自己的代码建立了tags文件，想要对其它库进行补全，就必须对它们的源代码建立tags文件，所幸的是vim的插件编写者们早已解决了这个需求，并且他们专门针对STL头文件进行了修改，以便能更好的适应omni的补全，首先下载STL源代码，地址为&lt;a href="http://www.vim.org/scripts/script.php?script_id=2358"&gt;http://www.vim.org/scripts/script.php?script_id=2358&lt;/a&gt;，可通过如下命令下载并解压&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/.vim/tags &amp;amp;&amp;amp; cd ~/.vim/tags &amp;amp;&amp;amp; wget &amp;quot;http://www.vim.org/scripts/download_script.php?src_id=9178&amp;quot; -O - | tar jxvf -
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就将STL的源码下载到了~/.vim/tags/cpp_src目录下，我们在该目录下执行ctags命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就生成了~/.vim/tags/cpp_src/tags这个文件，然后打开~/.vimrc进行如下设置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;set tags+=~/.vim/tags/cpp_src/tags
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;该命令是设置tags文件的搜索路径，默认只有vim工作目录的tags文件，这样设置之后就会同时加载指定目录的tags文件，你可以在后面添加更多其它第三方库的tags文件，现在对STL的补全效果如下
+&lt;img alt="" src="http://littlewhite.us/pic/omni_stl.png" /&gt;&lt;/p&gt;
+&lt;p&gt;omnicppcomplete的补全设置虽然麻烦，但也让我们更加清楚了插件是怎样工作的，作为程序员，至少应该对某些东西的工作原理搞清楚，而不是像使用IDE一样不管任何东西，你想自定义一下东西也无从下手。&lt;/p&gt;
+&lt;p&gt;omnicppcomplete触发补全需要用到&lt;code&gt;ctr+x ctr+o&lt;/code&gt;，显然这是不友好的，熟悉Linux命令行的人一定对shell命令的补全印象深刻，只需要按一下TAB键就可以进行补全，vim插件的强大之处在于，它可以实现你几乎所有的需求，想要用TAB键进行补全，就需要用到SuperTab&lt;/p&gt;
+&lt;h3&gt;SuperTab&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;项目地址&lt;/strong&gt;
+&lt;a href="https://github.com/ervandew/supertab"&gt;https://github.com/ervandew/supertab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;
+使用git进行安装是最方便的&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.vim/bundle &amp;amp;&amp;amp; git clone https://github.com/ervandew/supertab.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;
+无需任何配置即可使用，这时你想要补全变量名或函数名只需按一下TAB键即可，出现候选窗口之后也可以用TAB键进行选择，这样是不是方便了很多！&lt;br /&gt;
+由于TAB键被映射成了补全快捷键，也就无法通过TAB键直接输入制表符，这时如果想要输入制表符可以通过&lt;code&gt;ctr+v TAB&lt;/code&gt;即可，即先输入ctr+v再输入TAB键，在vim下通过ctl+v可以输入很多不可见字符，比如试试&lt;code&gt;ctr+v ctr+w&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;最终的配置文件&lt;/h2&gt;
+&lt;p&gt;装了这么多插件，在配置文件~/.vimrc里也增添了不少内容，最后你的配置文件至少应该包含以下内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;set tags+=~/.vim/tags/cpp_src/tags   &amp;quot; 设置tags搜索路径
+syntax on
+filetype plugin indent on
+
+map &amp;lt;C-n&amp;gt; :NERDTree&amp;lt;CR&amp;gt;
+
+&amp;quot; pathongen
+execute pathogen#infect()
+
+&amp;quot; taglist
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Use_Right_Window=1
+let Tlist_Sort_Type=&amp;quot;name&amp;quot;
+
+&amp;quot; omnicppcomplete
+set completeopt=longest,menu
+let OmniCpp_NamespaceSearch = 2     &amp;quot; search namespaces in the current buffer and in included files
+let OmniCpp_ShowPrototypeInAbbr = 1 &amp;quot; 显示函数参数列表
+let OmniCpp_MayCompleteScope = 1    &amp;quot; 输入 :: 后自动补全
+let OmniCpp_DefaultNamespaces = [&amp;quot;std&amp;quot;, &amp;quot;_GLIBCXX_STD&amp;quot;]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这个配置文件全都是和插件相关的配置，你还可以在里面添加其它配置来灵活定制你的vim，由于本文主要介绍插件相关内容，就不展开介绍了&lt;/p&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;vim的C++开发环境到此就配好了，总的来说我们安装了这么几类插件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;管理插件的插件&lt;/li&gt;
+&lt;li&gt;管理窗口和buffer&lt;/li&gt;
+&lt;li&gt;语法增强&lt;/li&gt;
+&lt;li&gt;代码补全&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过这些插件我们可以将vim打造成一个好用的IDE，虽然经过了很多周折，但这些功夫都不会白费，一来我们可以通过这些插件了解IDE的一些工作原理，二来通过这些插件的安装我们也更加了解了vim插件的使用方法，有了这些基础，后续如果想满足一些个性化的需求，岂不易哉！&lt;/p&gt;</summary><category term="vim"></category><category term="c++"></category></entry><entry><title>curl参数说明</title><link href="/curl%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:curl参数说明.html</id><summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-i/--include&lt;/td&gt;
+&lt;td&gt;输出响应包头&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-I&lt;/td&gt;
+&lt;td&gt;只获取响应包头&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-x/—proxy &lt;proxyhost[:port]&gt;&lt;/td&gt;
+&lt;td&gt;设置代理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-X/—request &lt;command&gt;&lt;/td&gt;
+&lt;td&gt;设置http method&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-D/—dump-header &lt;file&gt;&lt;/td&gt;
+&lt;td&gt;输出包头到指定文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-H/--header &lt;header&gt;&lt;/td&gt;
+&lt;td&gt;指定请求包头字段 &lt;/br&gt;如果有多个字段，可多次使用本参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-d/—data &lt;data&gt;&lt;/td&gt;
+&lt;td&gt;发送post数据(ascii)&lt;/br&gt; curl -d "param1=value1&amp;amp;param2=value2"&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;--data-binary &lt;data&gt; &lt;/br&gt;—data-binary '@filename'&lt;/td&gt;
+&lt;td&gt;发送二进制post数据&lt;/br&gt;如果以'@'开头则发送文件内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-A/—user-agent &lt;agent string&gt;&lt;/td&gt;
+&lt;td&gt;设置user-agent&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</summary><category term="curl"></category></entry><entry><title>http缓存服务器淘汰策略</title><link href="/http%E7%BC%93%E5%AD%98%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:http缓存服务器淘汰策略.html</id><summary type="html">&lt;p&gt;根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内存 -&amp;gt; SSD&lt;/li&gt;
+&lt;li&gt;SSD -&amp;gt; 硬盘&lt;/li&gt;
+&lt;li&gt;硬盘 -&amp;gt; 删除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。&lt;/p&gt;
+&lt;p&gt;具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论&lt;/p&gt;
+&lt;h2&gt;LRU&lt;/h2&gt;
+&lt;p&gt;最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”&lt;/p&gt;
+&lt;p&gt;LRU一般采用双向链表实现，基本结构如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;struct LruNode
+{
+    LruNode* prev;
+    LruNode* next;
+    void* data;
+};
+
+struct LruList
+{
+    LruNode* head;
+    LruNode* tail;
+};
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;LruNode中的data成员即指向实际缓存索引数据，假设缓存索引以hash结构表示，则淘汰链结构可设计如下&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/stnts/http-removal-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;这样hash结构和LRU链表结构分离，分别持有对方指针。下面考虑资源的三种操作&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;删除节点&lt;/strong&gt;&lt;br /&gt;
+假设删除key2，先通过key2查找到ValueObject，得到指向LruNode的指针，删除该节点即可，时间复杂度O(1)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/stnts/http-removal-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;新增节点&lt;/strong&gt;&lt;br /&gt;
+新增节点直接加入LruList头部，时间复杂度O(1)如下
+&lt;img alt="" src="http://littlewhite.us/pic/stnts/http-removal-3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;新增节点可能会导致缓存达到上限，比如限定内存缓存上限2G，新增一个内存缓存后会操过2G，则需要删除一些资源腾出空间，此时只需要从LruList尾部开始遍历，依次删除直到内存满足需求为止，时间复杂度O(M)，M为需要删除的节点个数。假设加入节点key5时需要删除key1，则结构如下&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/stnts/http-removal-4.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;访问节点&lt;/strong&gt;&lt;br /&gt;
+在LRU算法中，一个节点被访问后只需将该节点移动到链表头即可，时间复杂度O(1)，假设访问key4，则结构如下
+&lt;img alt="" src="http://littlewhite.us/pic/stnts/http-removal-5.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LRU优缺点&lt;/strong&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：实现简单&lt;/li&gt;
+&lt;li&gt;缺点：当存在热点数据时，LRU的效率很好，但偶发性的、周期性的批量操作会导致LRU命中率急剧下降，缓存污染情况比较严重&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;抽象&lt;/h2&gt;
+&lt;p&gt;前面主要描述了LRU算法结合hash索引的各种操作，实际上任何一个淘汰策略模型都可以被抽象为一个有序队列，每个节点持有一个value，这个value由具体的函数计算得到，队列根据value排序，这样，淘汰策略模型具体操作可描述如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加节点： 计算节点value，插入队列，并对队列重新排序&lt;/li&gt;
+&lt;li&gt;删除指定节点： 将节点从队列中删除&lt;/li&gt;
+&lt;li&gt;访问节点： 重新计算该节点value，并对队列重新排序&lt;/li&gt;
+&lt;li&gt;淘汰节点： 从value最小的节点开始依次淘汰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;模型的关键在于保持队列有序和计算节点vlaue值，假设我们已经有一个模型能满足基本的插入删除等操作，并保持队列有序，我们只需要实现不同的value计算函数即可实现不同的淘汰算法&lt;/p&gt;
+&lt;p&gt;以LRU为例，其value计算函数可描述为 &lt;/p&gt;
+&lt;p&gt;$$ V_i = LatestRefTime $$&lt;/p&gt;
+&lt;p&gt;即节点最近访问时间，每次访问节点均更新时间，这样新添加和最近被访问的节点优先级最高&lt;/p&gt;
+&lt;p&gt;基于这种抽象模型，下面介绍几种其它淘汰策略&lt;/p&gt;
+&lt;h2&gt;squid淘汰策略&lt;/h2&gt;
+&lt;p&gt;除了LRU以外，squid还实现了另外两种淘汰策略，这两种策略均可减少LRU缓存污染的缺点，并针对资源命中率和资源字节命中率做了优化&lt;/p&gt;
+&lt;h3&gt;GDSF&lt;/h3&gt;
+&lt;p&gt;GDSF（GreddyDual-Size with Frequency）会同时考虑资源访问频次和资源大小，越小的文件被缓存的可能性越大，因此该算法可提高资源命中率，其value计算函数描述如下&lt;/p&gt;
+&lt;p&gt;$$ V_i = F_i * C_i/S_i + L$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\( V_i \) 代表对象\( i \)计算的value值&lt;/li&gt;
+&lt;li&gt;\( F_i \) 代表对象的访问频次&lt;/li&gt;
+&lt;li&gt;\( C_i \) 代表将对象加入缓存的开销，根据squid论文，该值取1时效果最佳&lt;/li&gt;
+&lt;li&gt;\( S_i \) 代表对象大小&lt;/li&gt;
+&lt;li&gt;\( L \) 为动态age，随着对象的加入而递增&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;LFU-DA&lt;/h3&gt;
+&lt;p&gt;LFU-DA（Least Frequently Used with Dynamic Aging）是基于LFU（Least Frequently Used）增加了动态age，它更倾向于缓存被访问频次大的对象，而不论对象大小是多少，因此它可以获得更大的资源字节命中率，其value计算函数描述如下&lt;/p&gt;
+&lt;p&gt;$$ V_i = C_i * F_i + L$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\( V_i \) 代表对象\( i \)计算的value值&lt;/li&gt;
+&lt;li&gt;\( F_i \) 代表对象的访问频次&lt;/li&gt;
+&lt;li&gt;\( C_i \) 代表将对象加入缓存的开销&lt;/li&gt;
+&lt;li&gt;\( L \) 为动态age，随着对象的加入而递增&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当\( C_i \) 取值为1时，该算法等价于在LFU基础上添加动态age&lt;/p&gt;
+&lt;p&gt;squid中均有以上两种策略的实现，均采用heap管理，只是提供不同计算value的函数&lt;/p&gt;</summary><category term="http"></category></entry><entry><title>vpn简介以及国内外分流设置</title><link href="/vpn%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E5%9B%BD%E5%86%85%E5%A4%96%E5%88%86%E6%B5%81%E8%AE%BE%E7%BD%AE.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:vpn简介以及国内外分流设置.html</id><summary type="html">&lt;p&gt;为了维护共产主义的纯洁性，为了阻挡资本主义万恶势力的入侵，我大中华局域网平地拔起，多少互联网用户搜索是用百度，看新闻是用新浪、QQ，社交是用人人微博之流，但总有一份不安分子想要使用Google、Facebook等一些不纯净的网站，以窥探资本主义的罪恶，为了满足这些用户的好奇心，VPN服务营运而生&lt;/p&gt;
+&lt;h3&gt;vpn简介&lt;/h3&gt;
+&lt;p&gt;===
+在没有使用VPN的时候，我们访问网站的数据线路大致是这样的，我们以百度举例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你在浏览器输入www.baidu.com，DNS服务器给你解析出对应的ip&lt;/li&gt;
+&lt;li&gt;你的路由器将你的请求转给下一个路由器，下一个路由器再转给下下个路由器，一直到百度的服务器&lt;/li&gt;
+&lt;li&gt;百度服务器接收到请求，将百度的网页打包传给你，并带上你的ip&lt;/li&gt;
+&lt;li&gt;再经过一层层路由器的转发，百度返回的数据包回到你电脑上，由浏览器展示成网页的形式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果你想知道你访问百度经过了哪些路由跳转，可以通过如下命令查看到&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux：&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;traceroute www.baidu.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;windows（Dos界面下）:&lt;/p&gt;
+&lt;p&gt;tracert www.baidu.com&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同样，你访问国外的网站比如Google的时候也是通过以上的线路，只不过在你的请求数据到达Google服务器之前，要经过国内的统一出口，这个出口检测到你要访问Google，它可能会给你拦截下来，至于为什么，开篇已经说了，大家都懂的。这种拦截可能是根据ip拦截（比如facebook），也可能是根据你访问的数据内容拦截（比如Google），要知道HTTP请求是没有加密的，如果别人截获了你的HTTP请求，是可以知道你访问的具体内容的&lt;/p&gt;
+&lt;p&gt;但是并不是所有访问国外的请求都会被拦截，比如访问&lt;a href="http://who.is"&gt;who.is&lt;/a&gt;就没事，于是VPN就有了用武之地。VPN主机可以理解为国外没有被拦截的服务器，当你连上VPN再访问国外网站比如google时，它的数据线路大致是这样的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你的请求通过国内出口到达VPN主机，这时你的数据是经过加密的，所以无法通过内容来过滤你的请求&lt;/li&gt;
+&lt;li&gt;VPN主机从数据里解密，知道你要访问Google，VPN主机再向Google发起请求，这时由于VPN主机和Google服务器都在国外，不会被拦截&lt;/li&gt;
+&lt;li&gt;Google服务器将数据返回给VPN主机，VPN主机将数据加密，再返回给你的电脑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以我们有了VPN，就可以去一窥万恶的资本主义网络世界到底是个什么样子了。要连VPN，得知道VPN主机地址，有免费的也有收费的，为了用的心安理得我一直都是用收费的，我是在&lt;a href="http://vpnso.com"&gt;vpnso.com&lt;/a&gt;这个网站买的服务，支持Mac、windows、Android、IOS等设备，经济又实惠&lt;/p&gt;
+&lt;h3&gt;VPN分流&lt;/h3&gt;
+&lt;p&gt;===
+但是有了VPN问题又来了，上面说到我们的所有请求都会通过VPN主机，也就是说我们如果连上VPN之后再访问百度，也要绕那么一大圈，这样既耗流量又浪费时间。但是聪明的程序员也想到了解决的办法，那就是设置路由表来分流&lt;/p&gt;
+&lt;h4&gt;执行&lt;/h4&gt;
+&lt;p&gt;大致的原理就是通过一些命令设置电脑的路由表，每次访问时系统会先去路由表查一下，如果在路由表里则不通过VPN访问，不在才走VPN，这样就可以实现访问国内国外网站的分流了。github上有一个项目专干这事儿，地址在&lt;a href="https://github.com/jimmyxu/chnroutes"&gt;https://github.com/jimmyxu/chnroutes&lt;/a&gt;。下面我简要列出主要操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先下载chnroute.py&lt;/li&gt;
+&lt;li&gt;Mac下执行&lt;code&gt;python chnroutes.py -p mac&lt;/code&gt;，生成ip-up和ip-down两个文件，将文件cp到/etc/ppp目录下，如果目录不存在则新建一个&lt;/li&gt;
+&lt;li&gt;windows下执行&lt;code&gt;python chnroutes.py -p win&lt;/code&gt;，生成vpnup.bat和vpndown.bat，由于很多windows电脑没有装Python，可以直接去下载vpnup.bat和vpndown.bat两个文件，然后执行vpnup.bat。vpndown.bat其实没什么用，它是用来清除路由表的，但是电脑关机后自动清除&lt;/li&gt;
+&lt;li&gt;完成上面操作后再连上VPN，就可以实现分流了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;测试&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;通过访问网站&lt;/strong&gt;&lt;br /&gt;
+分别访问&lt;a href="http://www.123cha.com"&gt;www.123cha.com&lt;/a&gt;和&lt;a href="http://who.is"&gt;who.is&lt;/a&gt;，如果显示你的ip不同，那么就成功了。前者显示的是你国内的ip，后者显示的是你VPN主机的ip  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;通过命令行&lt;/strong&gt;&lt;br /&gt;
+通过前面介绍的traceroute和tracert命令，我们以windows下的tracert命令举例&lt;br /&gt;
+在DOS下执行&lt;code&gt;tracert www.baidu.com&lt;/code&gt;，第一跳ip地址应该是192.168.xx.xx&lt;br /&gt;
+执行&lt;code&gt;tracert www.google.com&lt;/code&gt;，第一跳地址应该是10.10.xx.xx  &lt;/p&gt;
+&lt;h4&gt;可能遇到的问题&lt;/h4&gt;
+&lt;p&gt;这里列举一个我遇到的问题&lt;/p&gt;
+&lt;p&gt;在公司内部大家都在一个局域网里，有时候为了方便共享会在自己机器上搭建Apache服务，然后把地址给别人访问，比如我的局域网ip是192.168.32.91，别人的是192.168.7.35，别好奇为什么最后两个域值不一样，那是因为我们不是连在同一个路由器上，这时候如果我连上了VPN，就无法访问到对方的主机，甚至ping都会失败。为什么呢，很简单，因为请求都是走VPN的，而VPN主机是无法访问公司内部局域网的ip的，所以就会失败&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;br /&gt;
+在前面提到的路由表里添加一行记录，我们以windows平台为例，打开vpnup.bat文件，建议不要用记事本，可以装一个editplus，编辑文本文件很方便。在最后按照他的格式添加一行记录，路由地址配192.168.0.0，子网掩码配255.255.0.0。断开VPN，重新执行vpnup.bat（注意这时候可能会显示路由表已添加，因为你前面已经执行过一次vpnup.bat，不要管它，一直让它执行到最后一条），再连上VPN，看看是不是可以访问了&lt;/p&gt;</summary><category term="vpn"></category></entry><entry><title>wordpress自定义页面显示所有文章列表</title><link href="/wordpress%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:wordpress自定义页面显示所有文章列表.html</id><summary type="html">&lt;p&gt;wordpress博客里有两种类型的网页，一种叫文章，一种叫页面（page），文章就是你发表的每篇博客所在的网页，页面就是你网站导航栏里的那些链接，比如“首页”，“关于我”这样的网页，这种网页的特点是集中展示某一类信息，比如首页展示每篇博客的摘要，“关于我”展示博主简介等等，自定义文章列表毫无疑问也是属于这一类的  &lt;/p&gt;
+&lt;p&gt;page类型的网页都是根据模板生成的，wordpress默认没有这一类模板，因此需要自己写一个PHP脚本，首先我们找到模板所在的目录，假设你的wordpress所在目录为/var/www，那么模板脚本在/var/www/wp-content/themes/your_theme，其中your_theme是你所使用的主体包，在里面建立一个文件page-allpost.php，内容如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nx"&gt;get_header&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;style&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+#table-allpost{border-collapse:collapse;}
+#table-allpost td,#table-allpost th{border:1px solid #98bf21;padding:3px 7px 2px 7px;text-align:center;}
+#table-allpost th{font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;background-color:#A7C942;color:#ffffff;}
+#table-allpost td{border:1px dotted #98bf21;}
+#table-allpost .td-left{text-align:left;}
+&lt;span class="nt"&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Content-Type&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/html; charset=utf-8&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;padding-bottom:10px&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;全部文章&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;page-allpost&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;table&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;table-allpost&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;th&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;编号&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;th&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;发布时间&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;th&amp;gt;&amp;lt;strong&amp;gt;&lt;/span&gt;标题&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; 
+    &lt;span class="nv"&gt;$Count_Posts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;wp_count_posts&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="nv"&gt;$Num_Posts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$Count_Posts&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;publish&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;query_posts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;posts_per_page=-1&amp;amp;caller_get_posts=1&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;have_posts&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;the_post&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="nv"&gt;$Num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sprintf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;%03d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$Num_Posts&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;tr&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;th&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$Num&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;/th&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;td&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;the_time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;get_option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;date_format&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;));&lt;/span&gt;
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;/td&amp;gt;&amp;lt;td class=&amp;quot;td-left&amp;quot;;&amp;gt;&amp;lt;a href=&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;the_permalink&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;quot; title=&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;esc_attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;get_the_title&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot;&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;the_title&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nv"&gt;$Num_Posts&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;endwhile&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;wp_reset_query&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+ &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nx"&gt;get_sidebar&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class="nx"&gt;get_footer&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;保存好之后，再去wordpress后台新建一个页面，注意不是发表文章，而是在仪表盘的“页面”一栏里选择新建页面，标题写“全部文章”，内容为空，别名（固定链接）设置为“&lt;font color="red" &gt;allpost&lt;/font&gt;”，注意这里的别名必须和之前的脚本名page-allpost.php对应。点击保存，然后刷新你的站点首页，看看导航栏里是不是有了“全部文章”选项，点击进去看看是不是如下效果  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="http://littlewhite.us/pic/allpost_screenshot.png" /&gt;&lt;/p&gt;</summary><category term="wordpress"></category></entry><entry><title>如何打造舒适的linux开发环境</title><link href="/%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E8%88%92%E9%80%82%E7%9A%84linux%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.html" rel="alternate"></link><published>2016-09-06T00:00:00+08:00</published><author><name>littlewhite</name></author><id>tag:,2016-09-06:如何打造舒适的linux开发环境.html</id><summary type="html">&lt;p&gt;&lt;img alt="" src="http://littlewhite.us/pic/linux_ssh.png" /&gt;
+首先要说明的是今天讲的不是安装教程，而是讲使用方式。写这篇文章的初衷是考虑到很多在校大学生对Linux接触较少，即便接触也只是装装系统，没有实际用过Linux开发环境，而互联网公司普遍都是Linux开发环境，可以说整个互联网就是建立在Linux服务器之上，因此越早使用Linux，工作之后就能越快上手。但如果你的方向是windows客户端开发，那后面的内容都没必要看了。&lt;/p&gt;
+&lt;p&gt;请允许我先吐槽一下windows集成开发环境（IDE），在我读书的时候大家用的最多的是VC6.0，现在发展到了VS2012，并不是说IDE不好，相反它会极大的提高开发效率，但那是对老程序员来讲是这样，对于一个新手来说，我们在乎的不是写代码有多快，而是了解程序从开发到运行各个步骤是如何串联起来。在IDE中，你不用写makefile，不用关心程序的编译过程以及代码之间的相互关联，你要做的只是建立工程，写好代码，点击一下run，背后的一切IDE都帮你做好了，等你毕业后进入BAT这些互联网企业，发现一切都和学校里不一样，你是那么的不适应，这时候你想，要是在学校就能接触这样的开发环境那该多好。&lt;/p&gt;
+&lt;p&gt;互联网公司的工作环境一般是windows电脑+Linux远程主机的模式，windows电脑用来上网发邮件满足办公需求，Linux服务器用来写代码满足开发需求，所谓是各司其职配合周到。对于个人用户来说，我们虽没有远程Linux主机，但可以安装Linux虚拟机，不管是在windows下还是Mac下都可以通过虚拟机软件VMware来安装Linux系统，推荐选择Ubuntu或Centos，这两个版本网上对应教程较多，更重要的是它们都自带包管理工具（apt-get和yum），可以方便的安装软件。装好虚拟机后，如果你直接在虚拟机上操作，会让人觉得很别扭，比如你在windows下上网查到的东西没法复制到虚拟机里，完全用虚拟机里Linux自带的浏览器软件又觉得操作没那么方便，这时候你又开始怀念window，还好，在windows下我们有终端模拟器。&lt;/p&gt;
+&lt;p&gt;在百度这样的大公司有成千上万台Linux服务器，这些服务器位于几十甚至几千公里外的机房，而程序员们就坐在西二旗百度大厦的办公室，你有没有想过他们是如何工作的呢。其实我们只需要通过ssh协议登陆远程主机就可以，但windows上没有直接的ssh命令可用，因此我们需要先安装终端模拟器软件xshell或SecureCRT，其中xshell有免费版，因此我推荐xshell。正如互联网公司的windows+远程Linux服务器模式，我们可以将自己的Linux虚拟机当做远程服务器，在自己的windows系统下安装终端模拟器，通过ssh协议登陆Linux主机，登陆上之后你就可以在xshell的窗口下操作Linux主机，而xshell是命令行窗口，抛弃了Linux一切不相干的图形图像界面，可以让你沉浸在纯正的Linux环境中，全身心的投入开发，至于查资料聊QQ发邮件等办公需求，就交给windows去完成。如果你是Mac用户，那更简单，找到Terminal程序，打开之后直接通过ssh连接Linux主机即可，不过Mac自带的Terminal不太好用，可以使用iTerm来替代。&lt;/p&gt;
+&lt;p&gt;最后大致说一下ssh的使用方式，首先确保你的Linux主机开启了ssh服务（一般默认是开启的），远程登陆命令为&lt;code&gt;ssh username@hostname&lt;/code&gt;，其中username是你的Linux用户名，hostname是主机名，或者是ip地址，回车输入密码即可登录。windows下的终端模拟器有很多图形化的设置选项，只要你配置好可以通过点击按钮自动连接主机，但你要知道它背后隐藏的其实就是这样一条简单的命令。题图就是我在Mac上通过iTerm使用ssh命令登陆我的博客主机的登陆界面，红框标记的是登陆命令，通过这种方式，我就可以登陆远在美国的Ubuntu主机，在上面去做任何我想做的事。&lt;/p&gt;
+&lt;p&gt;前面只是介绍了开发环境和使用原理，具体的安装细节可以百度Google，当你配置好了Linux开发环境，就可以徜徉在编程的乐趣中。Linux就像一盒巧克力，总有你喜欢的口味，只是需要你慢慢去发现&lt;/p&gt;</summary><category term="linux"></category></entry></feed>
