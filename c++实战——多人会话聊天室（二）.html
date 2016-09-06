@@ -13,27 +13,27 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="c++实战——多人会话聊天室（二） "/>
-<meta property="og:url" content="/c++实战——多人会话聊天室（二）.html" />
-<meta property="og:description" content="前面已经讲过一次多人会话聊天室的实现C++实战——多人会话聊天室（一），只不过上一篇是用最简单的方式，服务端每接收一个连接就起一个线程，而且是阻塞模式的，也就是说服务端每次调用accept函数时会一直等待有客户端连接上才会返回。今天介绍一种基于epoll模型的非阻塞方式的实现。 === 阻塞与非阻塞 顾名思义，阻塞就是当你调用一个函数后它会一直等在那里，知道某个信号叫醒它，最典型的例子就是read之类的函数，当你调用时它会等待标准输入，直到你在屏幕上输完敲下回车，它才会继续执行。Linux默认IO都是阻塞模型的 非阻塞就是当你调用函数之后它会立马返回，同样还是拿read举例，它不会阻塞在屏幕上等待你输入，而是立马返回，如果返回错误，那就代表没有数据可读。下面的例子可以大致说明一下差别 #include &lt;unistd.h&gt; #include &lt;stdio.h&gt; #include &lt;fcntl.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char *argv[]) { int res; res = fcntl(0, F_GETFL ..." />
+<meta property="og:url" content="http://localhost:8000/c++实战——多人会话聊天室（二）.html" />
+<meta property="og:description" content="前面已经讲过一次多人会话聊天室的实现C++实战——多人会话聊天室（一），只不过上一篇是用最简单的方式，服务端每接收一个连接就起一个线程，而且是阻塞模式的，也就是说服务端每次调用accept函数时会一直等待有客户端连接上才会返回。今天介绍一种基于epoll模型的非阻塞方式的实现。 === 阻塞与非阻塞¶ 顾名思义，阻塞就是当你调用一个函数后它会一直等在那里，知道某个信号叫醒它，最典型的例子就是read之类的函数，当你调用时它会等待标准输入，直到你在屏幕上输完敲下回车，它才会继续执行。Linux默认IO都是阻塞模型的 非阻塞就是当你调用函数之后它会立马返回，同样还是拿read举例，它不会阻塞在屏幕上等待你输入，而是立马返回，如果返回错误，那就代表没有数据可读。下面的例子可以大致说明一下差别 #include &lt;unistd.h&gt; #include &lt;stdio.h&gt; #include &lt;fcntl.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char *argv[]) { int res; res = fcntl(0, F_GETFL ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2016-09-06T00:00:00+08:00" />
 <meta property="" content="2016-09-06T00:00:00+08:00" />
 <meta name="twitter:title" content="c++实战——多人会话聊天室（二） ">
-<meta name="twitter:description" content="前面已经讲过一次多人会话聊天室的实现C++实战——多人会话聊天室（一），只不过上一篇是用最简单的方式，服务端每接收一个连接就起一个线程，而且是阻塞模式的，也就是说服务端每次调用accept函数时会一直等待有客户端连接上才会返回。今天介绍一种基于epoll模型的非阻塞方式的实现。 === 阻塞与非阻塞 顾名思义，阻塞就是当你调用一个函数后它会一直等在那里，知道某个信号叫醒它，最典型的例子就是read之类的函数，当你调用时它会等待标准输入，直到你在屏幕上输完敲下回车，它才会继续执行。Linux默认IO都是阻塞模型的 非阻塞就是当你调用函数之后它会立马返回，同样还是拿read举例，它不会阻塞在屏幕上等待你输入，而是立马返回，如果返回错误，那就代表没有数据可读。下面的例子可以大致说明一下差别 #include &lt;unistd.h&gt; #include &lt;stdio.h&gt; #include &lt;fcntl.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char *argv[]) { int res; res = fcntl(0, F_GETFL ...">
+<meta name="twitter:description" content="前面已经讲过一次多人会话聊天室的实现C++实战——多人会话聊天室（一），只不过上一篇是用最简单的方式，服务端每接收一个连接就起一个线程，而且是阻塞模式的，也就是说服务端每次调用accept函数时会一直等待有客户端连接上才会返回。今天介绍一种基于epoll模型的非阻塞方式的实现。 === 阻塞与非阻塞¶ 顾名思义，阻塞就是当你调用一个函数后它会一直等在那里，知道某个信号叫醒它，最典型的例子就是read之类的函数，当你调用时它会等待标准输入，直到你在屏幕上输完敲下回车，它才会继续执行。Linux默认IO都是阻塞模型的 非阻塞就是当你调用函数之后它会立马返回，同样还是拿read举例，它不会阻塞在屏幕上等待你输入，而是立马返回，如果返回错误，那就代表没有数据可读。下面的例子可以大致说明一下差别 #include &lt;unistd.h&gt; #include &lt;stdio.h&gt; #include &lt;fcntl.h&gt; #include &lt;stdlib.h&gt; int main(int argc, char *argv[]) { int res; res = fcntl(0, F_GETFL ...">
 
         <title>c++实战——多人会话聊天室（二）  · LittleWhite
 </title>
-        <!-- 
+        <!--
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        --!>
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        -->
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,18 +65,29 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/c++实战——多人会话聊天室（二）.html"> c++实战——多人会话聊天室（二）  </a></h1>
+    <h1><a href="http://localhost:8000/c++实战——多人会话聊天室（二）.html"> c++实战——多人会话聊天室（二）  </a></h1>
     </header>
 </div>
 
 <div class="row-fluid">
-        <div class="span8 offset2 article-content">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#_1">阻塞与非阻塞</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
 
             
-            <p>前面已经讲过一次多人会话聊天室的实现<a href="http://littlewhite.us/archives/109">C++实战——多人会话聊天室（一）</a>，只不过上一篇是用最简单的方式，服务端每接收一个连接就起一个线程，而且是阻塞模式的，也就是说服务端每次调用accept函数时会一直等待有客户端连接上才会返回。今天介绍一种基于epoll模型的非阻塞方式的实现。</p>
+            
+<p>前面已经讲过一次多人会话聊天室的实现<a href="http://littlewhite.us/archives/109">C++实战——多人会话聊天室（一）</a>，只不过上一篇是用最简单的方式，服务端每接收一个连接就起一个线程，而且是阻塞模式的，也就是说服务端每次调用accept函数时会一直等待有客户端连接上才会返回。今天介绍一种基于epoll模型的非阻塞方式的实现。</p>
 <p>===</p>
-<h4>阻塞与非阻塞</h4>
-<p>顾名思义，阻塞就是当你调用一个函数后它会一直等在那里，知道某个信号叫醒它，最典型的例子就是read之类的函数，当你调用时它会等待标准输入，直到你在屏幕上输完敲下回车，它才会继续执行。Linux默认IO都是阻塞模型的<br />
+<h4 id="_1">阻塞与非阻塞<a class="headerlink" href="#_1" title="Permanent link">¶</a></h4>
+<p>顾名思义，阻塞就是当你调用一个函数后它会一直等在那里，知道某个信号叫醒它，最典型的例子就是read之类的函数，当你调用时它会等待标准输入，直到你在屏幕上输完敲下回车，它才会继续执行。Linux默认IO都是阻塞模型的<br/>
 非阻塞就是当你调用函数之后它会立马返回，同样还是拿read举例，它不会阻塞在屏幕上等待你输入，而是立马返回，如果返回错误，那就代表没有数据可读。下面的例子可以大致说明一下差别</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -89,14 +100,14 @@
     <span class="n">res</span> <span class="o">=</span> <span class="n">fcntl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">F_GETFL</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="n">res</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;fcntl error!&quot;</span><span class="p">);</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">"fcntl error!"</span><span class="p">);</span>
         <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="cp">#ifdef NONBLOCK</span>
     <span class="n">res</span> <span class="o">|=</span> <span class="n">O_NONBLOCK</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">fcntl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">F_SETFL</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">perror</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">);</span>
+      <span class="n">perror</span><span class="p">(</span><span class="s">"error"</span><span class="p">);</span>
       <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="cp">#endif</span>
@@ -105,30 +116,24 @@
     <span class="n">n</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
     <span class="p">{</span>
-      <span class="n">perror</span><span class="p">(</span><span class="s">&quot;read error&quot;</span><span class="p">);</span>
+      <span class="n">perror</span><span class="p">(</span><span class="s">"read error"</span><span class="p">);</span>
       <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">else</span>
     <span class="p">{</span>
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;read %d characters</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"read %d characters</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>代码的意思很好理解，我们从标准输入读取数据，并打印出读取了多少字节，但是我们做了个测试，当定义了宏NONBLOCK后，我们会将标准输入句柄改变成非阻塞的，宏可以通过编译时的-D参数指定，我们分别按如下指令编译，假设文件名为test.cpp</p>
 <div class="highlight"><pre><span></span>g++ test.cpp -o test_block
 g++ test.cpp -D NONBLOCK -o test_nonblock
 </pre></div>
-
-
-<p>然后我们运行./test_block，程序会阻塞在屏幕上等待输入，输入hello world并回车，程序运行结束<br />
+<p>然后我们运行./test_block，程序会阻塞在屏幕上等待输入，输入hello world并回车，程序运行结束<br/>
 但是当我们运行./test_nonblock时，程序报错<em>read error: Resource temporarily unavailable</em>，这是因为此时的标准输入是非阻塞模式，当调用read后它会立马返回，而此时并没有数据可读取，就会返回错误，但是我们按如下方式就可运行成功</p>
-<div class="highlight"><pre><span></span>echo &quot;hello world&quot; | ./test_nonblock
+<div class="highlight"><pre><span></span>echo "hello world" | ./test_nonblock
 </pre></div>
-
-
 <p>因为在read调用之前，管道里已经有了数据，所以它会去读取管道里的数据而不会出错。</p>
 <p>to be continued...</p>
             
@@ -138,24 +143,19 @@ g++ test.cpp -D NONBLOCK -o test_nonblock
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
+<time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
+                <li><a href="http://localhost:8000/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
-<h4>Contact</h4>
-    <a href="#" title="My You can add links in your config file Profile" class="sidebar-social-links" target="_blank">
-    <i class="fa fa-you can add links in your config file sidebar-social-links"></i></a>
-    <a href="#" title="My Another social link Profile" class="sidebar-social-links" target="_blank">
-    <i class="fa fa-another social link sidebar-social-links"></i></a>
         </div>
         </section>
 </div>
@@ -176,8 +176,8 @@ g++ test.cpp -D NONBLOCK -o test_nonblock
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -185,7 +185,7 @@ g++ test.cpp -D NONBLOCK -o test_nonblock
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+        $('table').addClass('table table-hover')
         </script>
 
     

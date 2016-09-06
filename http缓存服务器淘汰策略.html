@@ -13,27 +13,27 @@
 <meta name="keywords" content="http, Skill, " />
 
 <meta property="og:title" content="http缓存服务器淘汰策略 "/>
-<meta property="og:url" content="/http缓存服务器淘汰策略.html" />
-<meta property="og:description" content="根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是 内存 -&gt; SSD SSD -&gt; 硬盘 硬盘 -&gt; 删除 也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。 具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论 LRU 最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高” LRU一般采用双向链表实现，基本结构如下 struct LruNode { LruNode* prev; LruNode* next; void* data; }; struct ..." />
+<meta property="og:url" content="http://localhost:8000/http缓存服务器淘汰策略.html" />
+<meta property="og:description" content="根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是 内存 -&gt; SSD SSD -&gt; 硬盘 硬盘 -&gt; 删除 也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。 具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论 LRU¶ 最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高” LRU一般采用双向链表实现，基本结构如下 struct LruNode { LruNode* prev; LruNode* next; void* data; }; struct ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2016-09-06T00:00:00+08:00" />
 <meta property="" content="2016-09-06T00:00:00+08:00" />
 <meta name="twitter:title" content="http缓存服务器淘汰策略 ">
-<meta name="twitter:description" content="根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是 内存 -&gt; SSD SSD -&gt; 硬盘 硬盘 -&gt; 删除 也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。 具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论 LRU 最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高” LRU一般采用双向链表实现，基本结构如下 struct LruNode { LruNode* prev; LruNode* next; void* data; }; struct ...">
+<meta name="twitter:description" content="根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是 内存 -&gt; SSD SSD -&gt; 硬盘 硬盘 -&gt; 删除 也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。 具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论 LRU¶ 最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高” LRU一般采用双向链表实现，基本结构如下 struct LruNode { LruNode* prev; LruNode* next; void* data; }; struct ...">
 
         <title>http缓存服务器淘汰策略  · LittleWhite
 </title>
-        <!-- 
+        <!--
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        --!>
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        -->
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,15 +65,32 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/http缓存服务器淘汰策略.html"> http缓存服务器淘汰策略  </a></h1>
+    <h1><a href="http://localhost:8000/http缓存服务器淘汰策略.html"> http缓存服务器淘汰策略  </a></h1>
     </header>
 </div>
 
 <div class="row-fluid">
-        <div class="span8 offset2 article-content">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#lru">LRU</a></li>
+<li><a href="#_1">抽象</a></li>
+<li><a href="#squid">squid淘汰策略</a><ul>
+<li><a href="#gdsf">GDSF</a></li>
+<li><a href="#lfu-da">LFU-DA</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
 
             
-            <p>根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是</p>
+            
+<p>根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是</p>
 <ul>
 <li>内存 -&gt; SSD</li>
 <li>SSD -&gt; 硬盘</li>
@@ -81,7 +98,7 @@
 </ul>
 <p>也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。</p>
 <p>具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论</p>
-<h2>LRU</h2>
+<h2 id="lru">LRU<a class="headerlink" href="#lru" title="Permanent link">¶</a></h2>
 <p>最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”</p>
 <p>LRU一般采用双向链表实现，基本结构如下</p>
 <div class="highlight"><pre><span></span>struct LruNode
@@ -97,28 +114,26 @@ struct LruList
     LruNode* tail;
 };
 </pre></div>
-
-
 <p>LruNode中的data成员即指向实际缓存索引数据，假设缓存索引以hash结构表示，则淘汰链结构可设计如下</p>
-<p><img alt="" src="http://littlewhite.us/pic/stnts/http-removal-1.png" /></p>
+<p><img alt="" src="http://littlewhite.us/pic/stnts/http-removal-1.png"/></p>
 <p>这样hash结构和LRU链表结构分离，分别持有对方指针。下面考虑资源的三种操作</p>
-<p><strong>删除节点</strong><br />
+<p><strong>删除节点</strong><br/>
 假设删除key2，先通过key2查找到ValueObject，得到指向LruNode的指针，删除该节点即可，时间复杂度O(1)</p>
-<p><img alt="" src="http://littlewhite.us/pic/stnts/http-removal-2.png" /></p>
-<p><strong>新增节点</strong><br />
+<p><img alt="" src="http://littlewhite.us/pic/stnts/http-removal-2.png"/></p>
+<p><strong>新增节点</strong><br/>
 新增节点直接加入LruList头部，时间复杂度O(1)如下
-<img alt="" src="http://littlewhite.us/pic/stnts/http-removal-3.png" /></p>
+<img alt="" src="http://littlewhite.us/pic/stnts/http-removal-3.png"/></p>
 <p>新增节点可能会导致缓存达到上限，比如限定内存缓存上限2G，新增一个内存缓存后会操过2G，则需要删除一些资源腾出空间，此时只需要从LruList尾部开始遍历，依次删除直到内存满足需求为止，时间复杂度O(M)，M为需要删除的节点个数。假设加入节点key5时需要删除key1，则结构如下</p>
-<p><img alt="" src="http://littlewhite.us/pic/stnts/http-removal-4.png" /></p>
-<p><strong>访问节点</strong><br />
+<p><img alt="" src="http://littlewhite.us/pic/stnts/http-removal-4.png"/></p>
+<p><strong>访问节点</strong><br/>
 在LRU算法中，一个节点被访问后只需将该节点移动到链表头即可，时间复杂度O(1)，假设访问key4，则结构如下
-<img alt="" src="http://littlewhite.us/pic/stnts/http-removal-5.png" /></p>
-<p><strong>LRU优缺点</strong>  </p>
+<img alt="" src="http://littlewhite.us/pic/stnts/http-removal-5.png"/></p>
+<p><strong>LRU优缺点</strong> </p>
 <ul>
 <li>优点：实现简单</li>
 <li>缺点：当存在热点数据时，LRU的效率很好，但偶发性的、周期性的批量操作会导致LRU命中率急剧下降，缓存污染情况比较严重</li>
 </ul>
-<h2>抽象</h2>
+<h2 id="_1">抽象<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>前面主要描述了LRU算法结合hash索引的各种操作，实际上任何一个淘汰策略模型都可以被抽象为一个有序队列，每个节点持有一个value，这个value由具体的函数计算得到，队列根据value排序，这样，淘汰策略模型具体操作可描述如下</p>
 <ul>
 <li>添加节点： 计算节点value，插入队列，并对队列重新排序</li>
@@ -128,14 +143,14 @@ struct LruList
 </ul>
 <p>模型的关键在于保持队列有序和计算节点vlaue值，假设我们已经有一个模型能满足基本的插入删除等操作，并保持队列有序，我们只需要实现不同的value计算函数即可实现不同的淘汰算法</p>
 <p>以LRU为例，其value计算函数可描述为 </p>
-<p>$$ V_i = LatestRefTime $$</p>
+<div class="math">$$ V_i = LatestRefTime $$</div>
 <p>即节点最近访问时间，每次访问节点均更新时间，这样新添加和最近被访问的节点优先级最高</p>
 <p>基于这种抽象模型，下面介绍几种其它淘汰策略</p>
-<h2>squid淘汰策略</h2>
+<h2 id="squid">squid淘汰策略<a class="headerlink" href="#squid" title="Permanent link">¶</a></h2>
 <p>除了LRU以外，squid还实现了另外两种淘汰策略，这两种策略均可减少LRU缓存污染的缺点，并针对资源命中率和资源字节命中率做了优化</p>
-<h3>GDSF</h3>
+<h3 id="gdsf">GDSF<a class="headerlink" href="#gdsf" title="Permanent link">¶</a></h3>
 <p>GDSF（GreddyDual-Size with Frequency）会同时考虑资源访问频次和资源大小，越小的文件被缓存的可能性越大，因此该算法可提高资源命中率，其value计算函数描述如下</p>
-<p>$$ V_i = F_i * C_i/S_i + L$$</p>
+<div class="math">$$ V_i = F_i * C_i/S_i + L$$</div>
 <ul>
 <li>\( V_i \) 代表对象\( i \)计算的value值</li>
 <li>\( F_i \) 代表对象的访问频次</li>
@@ -143,9 +158,9 @@ struct LruList
 <li>\( S_i \) 代表对象大小</li>
 <li>\( L \) 为动态age，随着对象的加入而递增</li>
 </ul>
-<h3>LFU-DA</h3>
+<h3 id="lfu-da">LFU-DA<a class="headerlink" href="#lfu-da" title="Permanent link">¶</a></h3>
 <p>LFU-DA（Least Frequently Used with Dynamic Aging）是基于LFU（Least Frequently Used）增加了动态age，它更倾向于缓存被访问频次大的对象，而不论对象大小是多少，因此它可以获得更大的资源字节命中率，其value计算函数描述如下</p>
-<p>$$ V_i = C_i * F_i + L$$</p>
+<div class="math">$$ V_i = C_i * F_i + L$$</div>
 <ul>
 <li>\( V_i \) 代表对象\( i \)计算的value值</li>
 <li>\( F_i \) 代表对象的访问频次</li>
@@ -154,6 +169,63 @@ struct LruList
 </ul>
 <p>当\( C_i \) 取值为1时，该算法等价于在LFU基础上添加动态age</p>
 <p>squid中均有以上两种策略的实现，均采用heap管理，只是提供不同计算value的函数</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             
             
             <hr/>
@@ -161,24 +233,19 @@ struct LruList
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
+<time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#skill-ref">Skill</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#http-ref">http
+                <li><a href="http://localhost:8000/tags.html#http-ref">http
                     <span>1</span>
 </a></li>
             </ul>
-<h4>Contact</h4>
-    <a href="#" title="My You can add links in your config file Profile" class="sidebar-social-links" target="_blank">
-    <i class="fa fa-you can add links in your config file sidebar-social-links"></i></a>
-    <a href="#" title="My Another social link Profile" class="sidebar-social-links" target="_blank">
-    <i class="fa fa-another social link sidebar-social-links"></i></a>
         </div>
         </section>
 </div>
@@ -199,8 +266,8 @@ struct LruList
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -208,7 +275,7 @@ struct LruList
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+        $('table').addClass('table table-hover')
         </script>
 
     
