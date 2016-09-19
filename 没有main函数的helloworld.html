@@ -13,7 +13,7 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="没有main函数的helloworld "/>
-<meta property="og:url" content="http://localhost:8000/没有main函数的helloworld.html" />
+<meta property="og:url" content="/没有main函数的helloworld.html" />
 <meta property="og:description" content="几乎所有程序员的第一堂课都是学习helloworld程序，下面我们先来重温一下经典的C语言helloworld /* hello.c */ #include &lt;stdio.h&gt; int main() { printf(&#34;hello world!\n&#34;); return 0; } 这是一个简单得不能再单的程序，但它包含有一个程序最重要的部分，那就是我们在几乎所有代码中都能看到的main函数，我们编译成可执行文件并查看符号表，过滤出里面的函数如下（为了方便查看我手动调整了grep的输出的格式，所以和你的输出格式是不一样的） $ gcc hello.c -o hello $ readelf -s hello | grep FUNC Num: Value Size Type Bind Vis Ndx Name 27: 000000000040040c 0 FUNC LOCAL DEFAULT 13 call_gmon_start 32: 0000000000400430 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -28,12 +28,12 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
         --!>
-        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
+        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://localhost:8000">Home</a></li>
-                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
-                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
-                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://localhost:8000/没有main函数的helloworld.html"> 没有main函数的helloworld  </a></h1>
+    <h1><a href="/没有main函数的helloworld.html"> 没有main函数的helloworld  </a></h1>
     </header>
 </div>
 
@@ -175,10 +175,10 @@ Num:    Value          Size Type    Bind   Vis      Ndx Name
 <time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="http://localhost:8000/categories.html#language-ref">Language</a>
+            <a class="category-link" href="/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://localhost:8000/tags.html#c-ref">c++
+                <li><a href="/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
@@ -202,8 +202,8 @@ Num:    Value          Size Type    Bind   Vis      Ndx Name
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
-        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+        <script src="/theme/js/jquery.min.js"></script>
+        <script src="/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {

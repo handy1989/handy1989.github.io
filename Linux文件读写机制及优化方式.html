@@ -13,7 +13,7 @@
 <meta name="keywords" content="linux, Skill, " />
 
 <meta property="og:title" content="Linux文件读写机制及优化方式 "/>
-<meta property="og:url" content="http://localhost:8000/Linux文件读写机制及优化方式.html" />
+<meta property="og:url" content="/Linux文件读写机制及优化方式.html" />
 <meta property="og:description" content="本文只讨论Linux下文件的读写机制，不涉及不同读取方式如read,fread,cin等的对比，这些读取方式本质上都是调用系统api read，只是做了不同封装。以下所有测试均使用open, read, write这一套系统api 缓存¶ 缓存是用来减少高速设备访问低速设备所需平均时间的组件，文件读写涉及到计算机内存和磁盘，内存操作速度远远大于磁盘，如果每次调用read,write都去直接操作磁盘，一方面速度会被限制，一方面也会降低磁盘使用寿命，因此不管是对磁盘的读操作还是写操作，操作系统都会将数据缓存起来 Page Cache¶ 页缓存（Page Cache）是位于内存和文件之间的缓冲区，它实际上也是一块内存区域，所有的文件IO（包括网络文件）都是直接和页缓存交互，操作系统通过一系列的数据结构，比如inode, address_space, struct page，实现将一个文件映射到页的级别，这些具体数据结构及之间的关系我们暂且不讨论，只需知道页缓存的存在以及它在文件IO中扮演着重要角色，很大一部分程度上，文件读写的优化就是对页缓存使用的优化 Dirty Page¶ 页缓存对应文件中的一块区域，如果页缓存和对应的文件区域内容不一致，则该页缓存叫做脏页（Dirty Page）。对页缓存进行修改或者新建页缓存，只要没有刷磁盘，都会产生脏页 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -28,12 +28,12 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
         --!>
-        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
+        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://localhost:8000">Home</a></li>
-                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
-                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
-                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://localhost:8000/Linux文件读写机制及优化方式.html"> Linux文件读写机制及优化方式  </a></h1>
+    <h1><a href="/Linux文件读写机制及优化方式.html"> Linux文件读写机制及优化方式  </a></h1>
     </header>
 </div>
 
@@ -233,10 +233,10 @@ for (int i = 0; i &lt; 1000; ++i)
 <time datetime="2016-09-19T00:00:00+08:00">Sep 19, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="http://localhost:8000/categories.html#skill-ref">Skill</a>
+            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://localhost:8000/tags.html#linux-ref">linux
+                <li><a href="/tags.html#linux-ref">linux
                     <span>2</span>
 </a></li>
             </ul>
@@ -260,8 +260,8 @@ for (int i = 0; i &lt; 1000; ++i)
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
-        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+        <script src="/theme/js/jquery.min.js"></script>
+        <script src="/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {

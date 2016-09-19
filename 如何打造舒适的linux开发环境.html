@@ -13,7 +13,7 @@
 <meta name="keywords" content="linux, Skill, " />
 
 <meta property="og:title" content="如何打造舒适的linux开发环境 "/>
-<meta property="og:url" content="http://localhost:8000/如何打造舒适的linux开发环境.html" />
+<meta property="og:url" content="/如何打造舒适的linux开发环境.html" />
 <meta property="og:description" content="首先要说明的是今天讲的不是安装教程，而是讲使用方式。写这篇文章的初衷是考虑到很多在校大学生对Linux接触较少，即便接触也只是装装系统，没有实际用过Linux开发环境，而互联网公司普遍都是Linux开发环境，可以说整个互联网就是建立在Linux服务器之上，因此越早使用Linux，工作之后就能越快上手。但如果你的方向是windows客户端开发，那后面的内容都没必要看了。 请允许我先吐槽一下windows集成开发环境（IDE），在我读书的时候大家用的最多的是VC6.0，现在发展到了VS2012，并不是说IDE不好，相反它会极大的提高开发效率，但那是对老程序员来讲是这样，对于一个新手来说，我们在乎的不是写代码有多快，而是了解程序从开发到运行各个步骤是如何串联起来。在IDE中，你不用写makefile，不用关心程序的编译过程以及代码之间的相互关联，你要做的只是建立工程，写好代码，点击一下run，背后的一切IDE都帮你做好了，等你毕业后进入BAT这些互联网企业，发现一切都和学校里不一样，你是那么的不适应，这时候你想，要是在学校就能接触这样的开发环境那该多好。 互联网公司的工作环境一般是windows电脑+Linux远程主机的模式，windows电脑用来上网发邮件满足办公需求，Linux服务器用来写代码满足开发需求，所谓是各司其职配合周到。对于个人用户来说，我们虽没有远程Linux主机，但可以安装Linux虚拟机，不管是在windows下还是Mac下都可以通过虚拟机软件VMware来安装Linux系统，推荐选择Ubuntu或Centos，这两个版本网上对应教程较多，更重要的是它们都自带包管理工具（apt-get和yum），可以方便的安装软件。装好虚拟机后，如果你直接在虚拟机上操作 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -27,12 +27,12 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
         --!>
-        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
+        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -44,14 +44,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://localhost:8000">Home</a></li>
-                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
-                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
-                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://localhost:8000/如何打造舒适的linux开发环境.html"> 如何打造舒适的linux开发环境  </a></h1>
+    <h1><a href="/如何打造舒适的linux开发环境.html"> 如何打造舒适的linux开发环境  </a></h1>
     </header>
 </div>
 
@@ -97,10 +97,10 @@
             <h4>Published</h4>
             <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
             <h4>Category</h4>
-            <a class="category-link" href="http://localhost:8000/categories.html#skill-ref">Skill</a>
+            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://localhost:8000/tags.html#linux-ref">linux
+                <li><a href="/tags.html#linux-ref">linux
                     <span>2</span>
 </a></li>
             </ul>
@@ -124,8 +124,8 @@
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
-        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+        <script src="/theme/js/jquery.min.js"></script>
+        <script src="/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
