@@ -13,7 +13,7 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="libevent evhttp学习——http服务端 "/>
-<meta property="og:url" content="/libevent evhttp学习——http服务端.html" />
+<meta property="og:url" content="http://localhost:8000/libevent evhttp学习——http服务端.html" />
 <meta property="og:description" content="http服务端相对客户端要简单很多，我们仍旧使用libevent-2.1.5版本，服务端接口和2.0版本没有区别 基本流程¶ http服务端使用到的借口函数及流程如下 创建event_base和evhttp cpp struct event_base *event_base_new(void); struct evhttp *evhttp_new(struct event_base *base); 绑定地址和端口 cpp int evhttp_bind_socket(struct evhttp *http, const char *address, ev_uint16_t port); 设置处理函数 cpp void evhttp_set_gencb(struct evhttp *http, void (*cb)(struct evhttp_request *, void *), void *arg); 派发事件循环 cpp int event_base_dispatch ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -24,16 +24,16 @@
 
         <title>libevent evhttp学习——http服务端  · LittleWhite
 </title>
-        <!--
+        <!-- 
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        -->
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        --!>
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/libevent evhttp学习——http服务端.html"> libevent evhttp学习——http服务端  </a></h1>
+    <h1><a href="http://localhost:8000/libevent evhttp学习——http服务端.html"> libevent evhttp学习——http服务端  </a></h1>
     </header>
 </div>
 
@@ -192,16 +192,16 @@ int event_base_dispatch(struct event_base *);</code></p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
+                <li><a href="http://localhost:8000/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
@@ -225,8 +225,8 @@ int event_base_dispatch(struct event_base *);</code></p>
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -234,7 +234,7 @@ int event_base_dispatch(struct event_base *);</code></p>
             }
         </script>
         <script>
-        $('table').addClass('table table-hover')
+        $("table").addClass("table table-hover");
         </script>
 
     

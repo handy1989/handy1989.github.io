@@ -13,7 +13,7 @@
 <meta name="keywords" content="http, Skill, " />
 
 <meta property="og:title" content="http缓存服务器淘汰策略 "/>
-<meta property="og:url" content="/http缓存服务器淘汰策略.html" />
+<meta property="og:url" content="http://localhost:8000/http缓存服务器淘汰策略.html" />
 <meta property="og:description" content="根据设计需求，一共有三级缓存，分别是内存，SSD，磁盘，所以缓存资源淘汰路径可以是 内存 -&gt; SSD SSD -&gt; 硬盘 硬盘 -&gt; 删除 也会有资源的优先级提升，比如从磁盘提升到SSD或内存。这三种缓存资源可采用同一个优先级队列来管理，新增一个资源时先计算其优先级，得到其在优先级队列中的位置，通过位置可决定存储到哪种媒介，同样，当访问资源时更新其优先级即其在队列中的位置，如果该位置对应的媒介发生变化，则需要做资源的迁移，并且在迁移时可能对目的媒介做调整以满足迁移需求。 具体有哪些存储媒介涉及具体实现，淘汰算法本身不关心这些，淘汰算法要做的只是调整资源在优先级队列中的位置，至于调整之后的操作则由业务层去负责，因此下面只针对淘汰算法本身来讨论 LRU¶ 最常见也是实现最简单的策略就是LRU（Least Recently Used，最近最少使用）算法，根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高” LRU一般采用双向链表实现，基本结构如下 struct LruNode { LruNode* prev; LruNode* next; void* data; }; struct ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -24,16 +24,16 @@
 
         <title>http缓存服务器淘汰策略  · LittleWhite
 </title>
-        <!--
+        <!-- 
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        -->
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        --!>
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/http缓存服务器淘汰策略.html"> http缓存服务器淘汰策略  </a></h1>
+    <h1><a href="http://localhost:8000/http缓存服务器淘汰策略.html"> http缓存服务器淘汰策略  </a></h1>
     </header>
 </div>
 
@@ -233,16 +233,16 @@ struct LruList
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#skill-ref">Skill</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#http-ref">http
+                <li><a href="http://localhost:8000/tags.html#http-ref">http
                     <span>1</span>
 </a></li>
             </ul>
@@ -266,8 +266,8 @@ struct LruList
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -275,7 +275,7 @@ struct LruList
             }
         </script>
         <script>
-        $('table').addClass('table table-hover')
+        $("table").addClass("table table-hover");
         </script>
 
     

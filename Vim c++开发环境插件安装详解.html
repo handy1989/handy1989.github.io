@@ -13,7 +13,7 @@
 <meta name="keywords" content="vim, c++, Skill, " />
 
 <meta property="og:title" content="Vim c++开发环境插件安装详解 "/>
-<meta property="og:url" content="/Vim c++开发环境插件安装详解.html" />
+<meta property="og:url" content="http://localhost:8000/Vim c++开发环境插件安装详解.html" />
 <meta property="og:description" content="C/C++是使用比例最高的程序语言，而vim是专为程序员开发的编辑器，当这两者结合起来，会给我们带来怎样的效果呢。 对于windows上做C++开发的用户来说，vs为他们做了大量的工作，语法高亮、自动缩进、智能提示等等，当你happy的使用vs时，请记住一点，这是一个收费软件，虽然在我大中华普遍都在使用微软的盗版软件，但作为程序员我们心里应该知道这是不对的行为，然后再去——等等，我们今天讨论的不是这个话题，我们要说的是Linux下的免费软件vim！ vim插件安装的教程在互联网上已经数不胜数，但是质量也参差不齐，很多都是在其它地方转载copy，而且没有注明使用环境，很多人安装时发现无法work，最后搞得一团糟，今天这篇文章的宗旨只有两个：1、使得安装简单；2、保证可以用。 阅读这篇文章的前提是你至少使用过vim，知道基本的操作。下面就开始进入主题。 安装环境¶ CentOS release 6.3 (Final) VIM 7.2 本文的插件安装均在以上环境中进行，顺带也会提一下其它平台的安装方式。 准备工作¶ 由于大多数vim插件都可以在github上找到，而且通过git安装、删除 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -23,16 +23,16 @@
 
         <title>Vim c++开发环境插件安装详解  · LittleWhite
 </title>
-        <!--
+        <!-- 
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        -->
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        --!>
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -44,14 +44,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/Vim c++开发环境插件安装详解.html"> Vim c++开发环境插件安装详解  </a></h1>
+    <h1><a href="http://localhost:8000/Vim c++开发环境插件安装详解.html"> Vim c++开发环境插件安装详解  </a></h1>
     </header>
 </div>
 
@@ -389,15 +389,15 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#skill-ref">Skill</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
+                <li><a href="http://localhost:8000/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
-                <li><a href="/tags.html#vim-ref">vim
+                <li><a href="http://localhost:8000/tags.html#vim-ref">vim
                     <span>1</span>
 </a></li>
             </ul>
@@ -421,8 +421,8 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -430,7 +430,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
             }
         </script>
         <script>
-        $('table').addClass('table table-hover')
+        $("table").addClass("table table-hover");
         </script>
 
     

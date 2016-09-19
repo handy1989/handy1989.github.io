@@ -13,7 +13,7 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="C++ extern用法详解 "/>
-<meta property="og:url" content="/C++ extern用法详解.html" />
+<meta property="og:url" content="http://localhost:8000/C++ extern用法详解.html" />
 <meta property="og:description" content="昨天写完文章快零点，为了不浪费每天一次的群发资格，得赶在零点之前发送，刚给自己的个人微信号发了预览，Mac竟然死机了，看来一个月不关机还是会出点小问题。写的文章还没保存，这下只能是从手机复制粘贴发送到电脑上重新编辑了，于是狠了心按了强制关机。重新开机后发现，所有软件竟然全部恢复了死机前的状态，包括我那正在编辑还没保存的文稿，这里要为Mac系统点个赞！ 以上是题外话，今天的内容是编程相关的，非计算机专业的同学看到这里可以去干别的事了 extern声明变量无外乎如下两种： 1、声明全局变量 2、声明函数 今天我们只谈extern，什么const、static之类等等与之相关或不相关的一律忽略，下面就分别对以上两种情况一一讲解 声明和定义¶ 既然提到extern声明变量，那我们就必须搞清楚声明和定义的区别。 这里我们将普通数据变量和函数统称变量。从内存分配角度来说，声明和定义的区别在于声明一个变量不会分配内存，而定义一个变量会分配内存。一个变量可以被声明多次，但是只能被定义一次。 基于以上前提，我们可以把声明和定义类比为指针和内存的关系。我们知道，指针其实就是指向内存的一个符号，变量的定义就好比一块内存区域，而声明就好比它的指针，可以有多个指针指向同一个内存区域，而一个指针只能指向一个内存区域，这样就很好理解为什么变量只能被定义一次，如果被定义多次，那就会分配多个内存，这样你通过变量的声明到底去找哪块内存区域呢，这会是个问题。 对于数据来说，声明和定义往往是同时存在的，比如下面的一行语句 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -24,16 +24,16 @@
 
         <title>C++ extern用法详解  · LittleWhite
 </title>
-        <!--
+        <!-- 
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        -->
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        --!>
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/C++ extern用法详解.html"> C++ extern用法详解  </a></h1>
+    <h1><a href="http://localhost:8000/C++ extern用法详解.html"> C++ extern用法详解  </a></h1>
     </header>
 </div>
 
@@ -205,16 +205,16 @@
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
+                <li><a href="http://localhost:8000/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
@@ -238,8 +238,8 @@
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -247,7 +247,7 @@
             }
         </script>
         <script>
-        $('table').addClass('table table-hover')
+        $("table").addClass("table table-hover");
         </script>
 
     

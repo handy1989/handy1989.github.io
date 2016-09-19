@@ -13,7 +13,7 @@
 <meta name="keywords" content="c++, Language, " />
 
 <meta property="og:title" content="extern “C”用法详解 "/>
-<meta property="og:url" content="/extern “C”用法详解.html" />
+<meta property="og:url" content="http://localhost:8000/extern “C”用法详解.html" />
 <meta property="og:description" content="今天是接着昨天谈extern的用法，纯技术贴。目前用户数以每天1-2的数量在增长，突破100不知何时到头啊，不过昨天的文章阅读数竟然超过了用户数，看来宣传宣传还是有用的，而且看到有更多人阅读，也给了我更大写作的动力，于是我决定不定期的在这里发放小米F码！周围有朋友有需求的赶紧号召过来关注哇，不过数量有限，每次发放一个，我会提前一天预告，第二天文章推送时将F码奉上，如果你看到F码并且也需要，请赶紧使用，不然有可能被别人抢走的哦^_^ ，明天要发放的F码是米4联通3G版 简单来说，extern “C”是C++声明或定义C语言符号的方法，是为了与C兼容。说来容易，要理解起来还是得费些周折，首先我们要从C++和C的区别说起。 符号¶ 大家都知道，从代码到可执行程序需要经过编译和链接两个过程，其中编译阶段会做语法检测，代码展开，另外它还会做一件事，就是将变量转成符号，链接的时候其实是通过符号来定位的。编译器在编译C和C++代码时，将变量转成符号的过程是不同的。本文所使用的编译器为gcc4.4.7 我们先来看一段简单的代码 /* hello.c */ #include &lt;stdio.h ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
@@ -24,16 +24,16 @@
 
         <title>extern “C”用法详解  · LittleWhite
 </title>
-        <!--
+        <!-- 
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        -->
-        <link href="/theme/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        --!>
+        <link href="http://localhost:8000/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="http://localhost:8000/theme/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
     </head>
     <body>
         <div id="content-sans-footer">
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>LittleWhite</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>LittleWhite</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/extern “C”用法详解.html"> extern “C”用法详解  </a></h1>
+    <h1><a href="http://localhost:8000/extern “C”用法详解.html"> extern “C”用法详解  </a></h1>
     </header>
 </div>
 
@@ -213,16 +213,16 @@ extern "C" int var;
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00"> 9 6, 2016</time>
+<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#language-ref">Language</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
+                <li><a href="http://localhost:8000/tags.html#c-ref">c++
                     <span>13</span>
 </a></li>
             </ul>
@@ -246,8 +246,8 @@ extern "C" int var;
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         -->
-        <script src="/theme/js/jquery.min.js"></script>
-        <script src="/theme/js/bootstrap.min.js"></script>
+        <script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+        <script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
         <script>
             function validateForm(query)
             {
@@ -255,7 +255,7 @@ extern "C" int var;
             }
         </script>
         <script>
-        $('table').addClass('table table-hover')
+        $("table").addClass("table table-hover");
         </script>
 
     
