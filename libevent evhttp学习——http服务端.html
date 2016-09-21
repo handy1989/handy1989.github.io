@@ -10,15 +10,15 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="c++, Language, " />
+<meta name="keywords" content="c++, libevent, http, Language, " />
 
 <meta property="og:title" content="libevent evhttp学习——http服务端 "/>
 <meta property="og:url" content="/libevent evhttp学习——http服务端.html" />
 <meta property="og:description" content="http服务端相对客户端要简单很多，我们仍旧使用libevent-2.1.5版本，服务端接口和2.0版本没有区别 基本流程¶ http服务端使用到的借口函数及流程如下 创建event_base和evhttp cpp struct event_base *event_base_new(void); struct evhttp *evhttp_new(struct event_base *base); 绑定地址和端口 cpp int evhttp_bind_socket(struct evhttp *http, const char *address, ev_uint16_t port); 设置处理函数 cpp void evhttp_set_gencb(struct evhttp *http, void (*cb)(struct evhttp_request *, void *), void *arg); 派发事件循环 cpp int event_base_dispatch ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
-<meta property="og:article:published_time" content="2016-09-06T00:00:00+08:00" />
-<meta property="" content="2016-09-06T00:00:00+08:00" />
+<meta property="og:article:published_time" content="2016-08-06T00:00:00+08:00" />
+<meta property="" content="2016-08-06T00:00:00+08:00" />
 <meta name="twitter:title" content="libevent evhttp学习——http服务端 ">
 <meta name="twitter:description" content="http服务端相对客户端要简单很多，我们仍旧使用libevent-2.1.5版本，服务端接口和2.0版本没有区别 基本流程¶ http服务端使用到的借口函数及流程如下 创建event_base和evhttp cpp struct event_base *event_base_new(void); struct evhttp *evhttp_new(struct event_base *base); 绑定地址和端口 cpp int evhttp_bind_socket(struct evhttp *http, const char *address, ev_uint16_t port); 设置处理函数 cpp void evhttp_set_gencb(struct evhttp *http, void (*cb)(struct evhttp_request *, void *), void *arg); 派发事件循环 cpp int event_base_dispatch ...">
 
@@ -192,10 +192,10 @@ int event_base_dispatch(struct event_base *);</code></p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
+            <time pubdate="pubdate" datetime="2016-08-06T00:00:00+08:00"> 8 6, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-09-06T00:00:00+08:00">Sep 6, 2016</time>
+<time datetime="2016-08-06T00:00:00+08:00"> 8 6, 2016</time>
 
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#language-ref">Language</a>
@@ -203,6 +203,12 @@ int event_base_dispatch(struct event_base *);</code></p>
             <ul class="list-of-tags tags-in-article">
                 <li><a href="/tags.html#c-ref">c++
                     <span>13</span>
+</a></li>
+                <li><a href="/tags.html#http-ref">http
+                    <span>3</span>
+</a></li>
+                <li><a href="/tags.html#libevent-ref">libevent
+                    <span>2</span>
 </a></li>
             </ul>
         </div>
