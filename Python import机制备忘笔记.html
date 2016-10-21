@@ -238,23 +238,38 @@ app/mod1/file1.py内容为<code>from ..mod2 import file2</code></p>
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/curl参数说明.html" title="Previous: curl参数说明">curl参数说明</a></li>
+                <li class="next-article"><a href="/C++ and Python 多线程笔记.html" title="Next: C++ &amp; Python 多线程笔记">C++ & Python 多线程笔记</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-04-07T00:00:00+08:00"> 4 7, 2016</time>
-
-<h4>Last Updated</h4>
-<time datetime="2016-04-07T00:00:00+08:00"> 4 7, 2016</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#python-ref">python
-                    <span>6</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2016-04-07T00:00:00+08:00"> 4 7, 2016</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2016-04-07T00:00:00+08:00">2016- 4-7</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#language-ref">Language</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#python-ref">python
+                            <span>6</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -284,7 +299,7 @@ app/mod1/file1.py内容为<code>from ..mod2 import file2</code></p>
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

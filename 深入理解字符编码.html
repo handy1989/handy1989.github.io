@@ -243,17 +243,27 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/Mac Alfred快速复制剪贴板和指定文本.html" title="Previous: Mac Alfred快速复制剪贴板和指定文本">Mac Alfred快速复制剪贴板和指定文本</a></li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-10-19T00:00:00+08:00">10 19, 2016</time>
-
-<h4>Last Updated</h4>
-<time datetime="2016-10-19T00:00:00+08:00">10 19, 2016</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2016-10-19T00:00:00+08:00">10 19, 2016</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2016-10-19T00:00:00+08:00">2016-10-19</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#skill-ref">Skill</a></td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -283,7 +293,7 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

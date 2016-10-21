@@ -10,7 +10,7 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="Vim, Skill, " />
+<meta name="keywords" content="vim, Skill, " />
 
 <meta property="og:title" content="vim自动更新tag "/>
 <meta property="og:url" content="/vim自动更新tag.html" />
@@ -137,23 +137,38 @@ log_file="auto_tags.log"
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/Mac OS X下快速复制文件路径.html" title="Previous: Mac OS X下快速复制文件路径">Mac OS X下快速复制文件路径</a></li>
+                <li class="next-article"><a href="/vim比较目录diff.html" title="Next: vim比较目录diff">vim比较目录diff</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-10T00:00:00+08:00"> 4 10, 2015</time>
-
-<h4>Last Updated</h4>
-<time datetime="2015-04-10T00:00:00+08:00"> 4 10, 2015</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#vim-ref">Vim
-                    <span>3</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2015-04-10T00:00:00+08:00"> 4 10, 2015</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2015-04-10T00:00:00+08:00">2015- 4-10</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#skill-ref">Skill</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#vim-ref">vim
+                            <span>3</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -183,7 +198,7 @@ log_file="auto_tags.log"
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

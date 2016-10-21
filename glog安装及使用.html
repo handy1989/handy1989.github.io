@@ -246,23 +246,38 @@ make install
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/c++实战——多人会话聊天室2.html" title="Previous: c++实战——多人会话聊天室2">c++实战——多人会话聊天室2</a></li>
+                <li class="next-article"><a href="/C++管理读写锁的一种实现方法.html" title="Next: C++管理读写锁的一种实现方法">C++管理读写锁的一种实现方法</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-06-18T00:00:00+08:00"> 6 18, 2014</time>
-
-<h4>Last Updated</h4>
-<time datetime="2014-06-18T00:00:00+08:00"> 6 18, 2014</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#glog-ref">glog
-                    <span>1</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2014-06-18T00:00:00+08:00"> 6 18, 2014</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2014-06-18T00:00:00+08:00">2014- 6-18</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#skill-ref">Skill</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#glog-ref">glog
+                            <span>1</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -292,7 +307,7 @@ make install
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

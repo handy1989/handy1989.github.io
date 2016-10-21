@@ -185,23 +185,38 @@ cut -f2- : 输出第2列及之后的内容，默认分隔符为\t
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/Linux技巧——用dd生成指定大小的文件.html" title="Previous: Linux技巧——用dd生成指定大小的文件">Linux技巧——用dd生成指定大小的文件</a></li>
+                <li class="next-article"><a href="/Mac如何自动发邮件给kindle推送文档.html" title="Next: Mac如何自动发邮件给kindle推送文档">Mac如何自动发邮件给kindle推送文档</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-01-18T00:00:00+08:00"> 1 18, 2015</time>
-
-<h4>Last Updated</h4>
-<time datetime="2015-01-18T00:00:00+08:00"> 1 18, 2015</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#shell-ref">shell
-                    <span>1</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2015-01-18T00:00:00+08:00"> 1 18, 2015</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2015-01-18T00:00:00+08:00">2015- 1-18</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#skill-ref">Skill</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#shell-ref">shell
+                            <span>1</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -231,7 +246,7 @@ cut -f2- : 输出第2列及之后的内容，默认分隔符为\t
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

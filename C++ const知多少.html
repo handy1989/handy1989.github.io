@@ -152,23 +152,38 @@ y = p;
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/wordpress自定义页面显示所有文章列表.html" title="Previous: wordpress自定义页面显示所有文章列表">wordpress自定义页面显示所有文章列表</a></li>
+                <li class="next-article"><a href="/c++实战——多人会话聊天室1.html" title="Next: c++实战——多人会话聊天室1">c++实战——多人会话聊天室1</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-04-24T00:00:00+08:00"> 4 24, 2014</time>
-
-<h4>Last Updated</h4>
-<time datetime="2014-04-24T00:00:00+08:00"> 4 24, 2014</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
-                    <span>14</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2014-04-24T00:00:00+08:00"> 4 24, 2014</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2014-04-24T00:00:00+08:00">2014- 4-24</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#language-ref">Language</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#c-ref">c++
+                            <span>14</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -198,7 +213,7 @@ y = p;
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

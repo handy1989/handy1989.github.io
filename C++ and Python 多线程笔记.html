@@ -270,26 +270,41 @@
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/Python import机制备忘笔记.html" title="Previous: Python import机制备忘笔记">Python import机制备忘笔记</a></li>
+                <li class="next-article"><a href="/libevent evhttp学习——http客户端.html" title="Next: libevent evhttp学习——http客户端">libevent evhttp学习——http客户端</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-08-01T00:00:00+08:00"> 8 1, 2016</time>
-
-<h4>Last Updated</h4>
-<time datetime="2016-08-01T00:00:00+08:00"> 8 1, 2016</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#language-ref">Language</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#c-ref">c++
-                    <span>14</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2016-08-01T00:00:00+08:00"> 8 1, 2016</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2016-08-01T00:00:00+08:00">2016- 8-1</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#language-ref">Language</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#c-ref">c++
+                            <span>14</span>
 </a></li>
-                <li><a href="/tags.html#python-ref">python
-                    <span>6</span>
+                        <li><a href="/tags.html#python-ref">python
+                            <span>6</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -319,7 +334,7 @@
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     

@@ -10,7 +10,7 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="Vim, Skill, " />
+<meta name="keywords" content="vim, Skill, " />
 
 <meta property="og:title" content="vim比较目录diff "/>
 <meta property="og:url" content="/vim比较目录diff.html" />
@@ -436,23 +436,38 @@ show_diff <span class="nv">$tmp_dir</span>/diff_file
             
             
             <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/vim自动更新tag.html" title="Previous: vim自动更新tag">vim自动更新tag</a></li>
+                <li class="next-article"><a href="/一行Python代码——单词逆转.html" title="Next: 一行Python代码——单词逆转">一行Python代码——单词逆转</a> »</li>
+            </ul>
+            </nav>
+            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-27T00:00:00+08:00"> 4 27, 2015</time>
-
-<h4>Last Updated</h4>
-<time datetime="2015-04-27T00:00:00+08:00"> 4 27, 2015</time>
-
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#skill-ref">Skill</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#vim-ref">Vim
-                    <span>3</span>
+            <table class="table">
+            <!-- <time pubdate="pubdate" datetime="2015-04-27T00:00:00+08:00"> 4 27, 2015</time> -->
+            <tr>
+                <td>Published</td>
+                <td><time pubdate="pubdate" datetime="2015-04-27T00:00:00+08:00">2015- 4-27</time></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><a class="category-link" href="/categories.html#skill-ref">Skill</a></td>
+            </tr>
+            <tr>
+                <td>Tags</td>
+                <td>
+                    <ul class="list-of-tags tags-in-article">
+                        <li><a href="/tags.html#vim-ref">vim
+                            <span>3</span>
 </a></li>
-            </ul>
+                    </ul>
+                </td>
+            </tr>
+            </table>
         </div>
         </section>
 </div>
@@ -482,7 +497,7 @@ show_diff <span class="nv">$tmp_dir</span>/diff_file
             }
         </script>
         <script>
-        $("table").addClass("table table-hover");
+            $("div.article-content table").addClass("table table-hover");
         </script>
 
     
