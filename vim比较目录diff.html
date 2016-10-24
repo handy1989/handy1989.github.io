@@ -14,13 +14,13 @@
 
 <meta property="og:title" content="vim比较目录diff "/>
 <meta property="og:url" content="/vim比较目录diff.html" />
-<meta property="og:description" content="虽然现在有很多图形界面的diff工具，但对于有命令行情节的人来说，当飞快的在terminal下敲击键盘时，总不希望再拿鼠标去点击其它地方，况且有时候图形界面占用资源多，我的MBA就经常启动diffmerge时卡住，但vimdiff又只能在一个标签里比较一组文件的diff，如果想比较两个目录下文件的diff，它就显得无能为力了 假设我们要实现一个工具叫diffdir，先让我们脑洞打开设想一下它应该是怎样的 我希望能列出两个目录下文件名相同但内容不同的所有文件，并进行编号 我希望通过选择编号，打开需要比较diff的文件 如果想比较多组文件的diff，我希望每个vim标签打开一组文件比较 最好能过滤掉非文本文件，因为我不希望用vim打开一对二进制乱码 最好还能有交互，我可以选择只查看我感兴趣的文件，而不是一次打开所有文件的diff，当退出vim时我还可以继续选择 假设有两个目录分别是A和B，目录结构如下 A ├── file1 ├── file2 └── file3 B和A目录结构以及对应文件名都相同，其中file1和file2的内容不同，file3内容相同，那么当我们运行diffdir A B时，它应该是这样的界面 当我们选择编号1时，vim会打开一个标签对比两个目录下file1的差异 当我们选择1,2或1-2时，vim会打开两个标签分别比较file1和file2的差异 由于这个例子有diff的文件数量较少，我们还可以选择a一次打开所有文件的diff 如果diff文件个数较多 ..." />
+<meta property="og:description" content="vim比较文件diff vim在新标签比较文件diff vim批量执行命令 最终实现 虽然现在有很多图形界面的diff工具，但对于有命令行情节的人来说，当飞快的在terminal下敲击键盘时，总不希望再拿鼠标去点击其它地方，况且有时候图形界面占用资源多，我的MBA就经常启动diffmerge时卡住，但vimdiff又只能在一个标签里比较一组文件的diff，如果想比较两个目录下文件的diff，它就显得无能为力了 假设我们要实现一个工具叫diffdir，先让我们脑洞打开设想一下它应该是怎样的 我希望能列出两个目录下文件名相同但内容不同的所有文件，并进行编号 我希望通过选择编号，打开需要比较diff的文件 如果想比较多组文件的diff，我希望每个vim标签打开一组文件比较 最好能过滤掉非文本文件，因为我不希望用vim打开一对二进制乱码 最好还能有交互，我可以选择只查看我感兴趣的文件，而不是一次打开所有文件的diff，当退出vim时我还可以继续选择 假设有两个目录分别是A和B，目录结构如下 A ├── file1 ├── file2 └── file3 B和A目录结构以及对应文件名都相同，其中file1和file2的内容不同，file3内容相同，那么当我们运行diffdir A B时，它应该是这样的界面 当我们选择编号1时，vim会打开一个标签对比两个目录下file1的差异 当我们选择1,2或1-2时 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2015-04-27T00:00:00+08:00" />
 <meta property="" content="2015-04-27T00:00:00+08:00" />
 <meta name="twitter:title" content="vim比较目录diff ">
-<meta name="twitter:description" content="虽然现在有很多图形界面的diff工具，但对于有命令行情节的人来说，当飞快的在terminal下敲击键盘时，总不希望再拿鼠标去点击其它地方，况且有时候图形界面占用资源多，我的MBA就经常启动diffmerge时卡住，但vimdiff又只能在一个标签里比较一组文件的diff，如果想比较两个目录下文件的diff，它就显得无能为力了 假设我们要实现一个工具叫diffdir，先让我们脑洞打开设想一下它应该是怎样的 我希望能列出两个目录下文件名相同但内容不同的所有文件，并进行编号 我希望通过选择编号，打开需要比较diff的文件 如果想比较多组文件的diff，我希望每个vim标签打开一组文件比较 最好能过滤掉非文本文件，因为我不希望用vim打开一对二进制乱码 最好还能有交互，我可以选择只查看我感兴趣的文件，而不是一次打开所有文件的diff，当退出vim时我还可以继续选择 假设有两个目录分别是A和B，目录结构如下 A ├── file1 ├── file2 └── file3 B和A目录结构以及对应文件名都相同，其中file1和file2的内容不同，file3内容相同，那么当我们运行diffdir A B时，它应该是这样的界面 当我们选择编号1时，vim会打开一个标签对比两个目录下file1的差异 当我们选择1,2或1-2时，vim会打开两个标签分别比较file1和file2的差异 由于这个例子有diff的文件数量较少，我们还可以选择a一次打开所有文件的diff 如果diff文件个数较多 ...">
+<meta name="twitter:description" content="vim比较文件diff vim在新标签比较文件diff vim批量执行命令 最终实现 虽然现在有很多图形界面的diff工具，但对于有命令行情节的人来说，当飞快的在terminal下敲击键盘时，总不希望再拿鼠标去点击其它地方，况且有时候图形界面占用资源多，我的MBA就经常启动diffmerge时卡住，但vimdiff又只能在一个标签里比较一组文件的diff，如果想比较两个目录下文件的diff，它就显得无能为力了 假设我们要实现一个工具叫diffdir，先让我们脑洞打开设想一下它应该是怎样的 我希望能列出两个目录下文件名相同但内容不同的所有文件，并进行编号 我希望通过选择编号，打开需要比较diff的文件 如果想比较多组文件的diff，我希望每个vim标签打开一组文件比较 最好能过滤掉非文本文件，因为我不希望用vim打开一对二进制乱码 最好还能有交互，我可以选择只查看我感兴趣的文件，而不是一次打开所有文件的diff，当退出vim时我还可以继续选择 假设有两个目录分别是A和B，目录结构如下 A ├── file1 ├── file2 └── file3 B和A目录结构以及对应文件名都相同，其中file1和file2的内容不同，file3内容相同，那么当我们运行diffdir A B时，它应该是这样的界面 当我们选择编号1时，vim会打开一个标签对比两个目录下file1的差异 当我们选择1,2或1-2时 ...">
 
         <title>vim比较目录diff  · LittleWhite
 </title>
@@ -70,10 +70,9 @@
 </div>
 
 <div class="row-fluid">
-    <div class="span2 table-of-content">
-        <nav>
-        <h4>Contents</h4>
-        <div class="toc">
+    <div class="span8 offset2 article-content">
+            
+            <div class="toc">
 <ul>
 <li><a href="#vimdiff">vim比较文件diff</a></li>
 <li><a href="#vimdiff_1">vim在新标签比较文件diff</a></li>
@@ -81,12 +80,6 @@
 <li><a href="#_1">最终实现</a></li>
 </ul>
 </div>
-        </nav>
-    </div>
-    <div class="span8 article-content">
-
-            
-            
 <p>虽然现在有很多图形界面的diff工具，但对于有命令行情节的人来说，当飞快的在terminal下敲击键盘时，总不希望再拿鼠标去点击其它地方，况且有时候图形界面占用资源多，我的MBA就经常启动diffmerge时卡住，但vimdiff又只能在一个标签里比较一组文件的diff，如果想比较两个目录下文件的diff，它就显得无能为力了</p>
 <p>假设我们要实现一个工具叫diffdir，先让我们脑洞打开设想一下它应该是怎样的</p>
 <ol>
@@ -102,40 +95,46 @@
 ├── file2
 └── file3
 </pre></div>
+
+
 <p>B和A目录结构以及对应文件名都相同，其中file1和file2的内容不同，file3内容相同，那么当我们运行<code>diffdir A B</code>时，它应该是这样的界面</p>
-<p><img alt="" src="http://littlewhite.us/pic/20150427/1.png"/></p>
-<p>当我们选择编号1时，vim会打开一个标签对比两个目录下file1的差异<br/>
-当我们选择<code>1,2</code>或<code>1-2</code>时，vim会打开两个标签分别比较file1和file2的差异<br/>
-由于这个例子有diff的文件数量较少，我们还可以选择a一次打开所有文件的diff<br/>
+<p><img alt="" src="http://littlewhite.us/pic/20150427/1.png" /></p>
+<p>当我们选择编号1时，vim会打开一个标签对比两个目录下file1的差异<br />
+当我们选择<code>1,2</code>或<code>1-2</code>时，vim会打开两个标签分别比较file1和file2的差异<br />
+由于这个例子有diff的文件数量较少，我们还可以选择a一次打开所有文件的diff<br />
 如果diff文件个数较多，我们可以分批打开，并且当我们退出vim后还可以继续选择</p>
 <p>接下来是实现</p>
-<h3 id="vimdiff">vim比较文件diff<a class="headerlink" href="#vimdiff" title="Permanent link">¶</a></h3>
+<h3 id="vimdiff">vim比较文件diff<a class="headerlink" href="#vimdiff" title="Permanent link">&para;</a></h3>
 <p>我们都知道vimdiff的用法，其实<code>vimdiff A/file1 B/file1</code>等价于<code>vim -d A/file1 B/file2</code>，又或者更原始一点，我们可以分两步来比较两个文件的diff</p>
 <ol>
 <li>执行<code>vim A/file1</code></li>
 <li>在normal模式下输入<code>:vertical diffsplit B/file1</code></li>
 </ol>
 <p>虽然人们不会用这么麻烦的命令去比价文件的diff，但往往最基本的命令反而能组合出更多的功能，就像搭积木一样，我们只需要几个基本的形状，就可以通过自己的想象搭建多彩的世界，而vim的这些基本命令就像积木一样，我们要做的是利于好这些积木</p>
-<h3 id="vimdiff_1">vim在新标签比较文件diff<a class="headerlink" href="#vimdiff_1" title="Permanent link">¶</a></h3>
+<h3 id="vimdiff_1">vim在新标签比较文件diff<a class="headerlink" href="#vimdiff_1" title="Permanent link">&para;</a></h3>
 <p>假设我们已经用上面的命令打开了vim并比较file1的diff，如果我们希望新建一个标签来比较file2的diff呢，还是要用到基本的ex命令</p>
 <ol>
 <li>在normal模式下执行<code>:tabnew A/file2</code></li>
 <li>在normal模式下执行<code>:vertical diffsplit B/file1</code></li>
 </ol>
-<h3 id="vim">vim批量执行命令<a class="headerlink" href="#vim" title="Permanent link">¶</a></h3>
+<h3 id="vim">vim批量执行命令<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h3>
 <p>以上两个示例就是我们需要的积木，有了积木，我们就可以组合出强大的命令，现在要做的是同时打开两组文件的diff，并且每个标签一组diff</p>
 <p>通过查看vim帮助我们发现vim有如下两个参数</p>
 <div class="highlight"><pre><span></span>-c &lt;command&gt;         加载第一个文件后执行 &lt;command&gt;
 -S &lt;session&gt;         加载第一个文件后执行文件 &lt;session&gt;
 </pre></div>
+
+
 <p>这两个参数都可以让vim启动时执行一些命令，其中-c是从参数读取命令，-S是从文件读取命令，于是我们就可以将需要执行的命令存入文件，启动vim时通过-S参数加载该文件，就能达到我们批量执行命令的目的。假设我们需要打开两个标签，分别比较A，B目录下file1和file2的diff，事先创建vim.script如下（文件名随意，最好采用绝对路径，以免受到vim配置里autochdir的影响）</p>
 <div class="highlight"><pre><span></span>edit A/file1
 vertical diffsplit B/file1
 tabnew A/file2
 vertical diffsplit B/file2
 </pre></div>
+
+
 <p>然后执行<code>vim -S vim.script</code>，看看是否如你所愿，打开了两个标签，分别比较file1和file2的diff。注意，为了</p>
-<h3 id="_1">最终实现<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<h3 id="_1">最终实现<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>既然有了这些积木，那我们就可以灵活的根据需要编写脚本实现我们的需求，下面是我最终的实现，也可以在github上查看源码</p>
 <p><a href="https://github.com/handy1989/vim/blob/master/diffdir">https://github.com/handy1989/vim/blob/master/diffdir</a></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
@@ -286,11 +285,11 @@ vertical diffsplit B/file2
 146
 147</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -ne <span class="m">2</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">"Usage:</span><span class="nv">$0</span><span class="s2"> dir1 dir2"</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Usage:</span><span class="nv">$0</span><span class="s2"> dir1 dir2&quot;</span>
     <span class="nb">exit</span> 1
 <span class="k">fi</span>
 <span class="k">if</span> <span class="o">[</span> ! -d <span class="nv">$1</span> -o ! -d <span class="nv">$2</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2"> or </span><span class="nv">$2</span><span class="s2"> is not derectory!"</span>
+    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2"> or </span><span class="nv">$2</span><span class="s2"> is not derectory!&quot;</span>
     <span class="nb">exit</span> 1
 <span class="k">fi</span>
 
@@ -303,17 +302,17 @@ rm -rf <span class="nv">$tmp_dir</span>
 mkdir -p <span class="nv">$tmp_dir</span> <span class="o">||</span> <span class="nb">exit</span> 0
 <span class="c1">#echo $tmp_dir</span>
 
-<span class="nb">trap</span> <span class="s2">"rm -rf </span><span class="nv">$tmp_dir</span><span class="s2">; exit 0"</span> SIGINT SIGTERM
+<span class="nb">trap</span> <span class="s2">&quot;rm -rf </span><span class="nv">$tmp_dir</span><span class="s2">; exit 0&quot;</span> SIGINT SIGTERM
 
 <span class="c1">## 注意，Mac和Linux的MD5程序不同，请根据需求使用，这里是Mac版的用法</span>
 <span class="k">function</span> get_file_md5
 <span class="o">{</span>
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -ne <span class="m">1</span>  <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">"get_file_md5 arg num error!"</span>
+        <span class="nb">echo</span> <span class="s2">&quot;get_file_md5 arg num error!&quot;</span>
         <span class="k">return</span> 1
     <span class="k">fi</span>
     <span class="nb">local</span> <span class="nv">file</span><span class="o">=</span><span class="nv">$1</span>
-    md5 <span class="nv">$file</span> <span class="p">|</span> awk -F<span class="s2">"="</span> <span class="s1">'{print $2}'</span>
+    md5 <span class="nv">$file</span> <span class="p">|</span> awk -F<span class="s2">&quot;=&quot;</span> <span class="s1">&#39;{print $2}&#39;</span>
 <span class="o">}</span>
 
 <span class="k">function</span> myexit
@@ -328,14 +327,14 @@ mkdir -p <span class="nv">$tmp_dir</span> <span class="o">||</span> <span class=
         <span class="k">return</span> 1
     <span class="k">fi</span>
     <span class="nb">local</span> <span class="nv">diff_file</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nb">echo</span> <span class="s2">"diff file:"</span>
-    <span class="nb">printf</span> <span class="s2">"    %-55s  %-52s\n"</span> <span class="nv">$arg1</span> <span class="nv">$arg2</span>
+    <span class="nb">echo</span> <span class="s2">&quot;diff file:&quot;</span>
+    <span class="nb">printf</span> <span class="s2">&quot;    %-55s  %-52s\n&quot;</span> <span class="nv">$arg1</span> <span class="nv">$arg2</span>
     <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$tmp_dir</span>/A_ony_file <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-        awk <span class="s1">'{printf("    [%2d] %-50s\n", NR, $1)}'</span> <span class="nv">$tmp_dir</span>/A_ony_file
-        python -c <span class="s1">'print "-"*100'</span>
+        awk <span class="s1">&#39;{printf(&quot;    [%2d] %-50s\n&quot;, NR, $1)}&#39;</span> <span class="nv">$tmp_dir</span>/A_ony_file
+        python -c <span class="s1">&#39;print &quot;-&quot;*100&#39;</span>
     <span class="k">fi</span>
-    awk <span class="s1">'{printf("    [%2d] %-50s  %-50s\n", NR, $1, $1)}'</span> <span class="nv">$diff_file</span>
-    <span class="nb">echo</span> <span class="s2">"(s):show diff files (a):open all diff files (q):exit"</span>
+    awk <span class="s1">&#39;{printf(&quot;    [%2d] %-50s  %-50s\n&quot;, NR, $1, $1)}&#39;</span> <span class="nv">$diff_file</span>
+    <span class="nb">echo</span> <span class="s2">&quot;(s):show diff files (a):open all diff files (q):exit&quot;</span>
     <span class="nb">echo</span>
 <span class="o">}</span>
 
@@ -345,62 +344,62 @@ mkdir -p <span class="nv">$tmp_dir</span> <span class="o">||</span> <span class=
     <span class="nb">local</span> <span class="nv">value</span><span class="o">=</span><span class="nv">$2</span>
     <span class="nv">tmp_file</span><span class="o">=</span><span class="nv">$tmp_dir</span>/tmp_file
     &gt;<span class="nv">$tmp_file</span>
-    <span class="k">for</span> numbers in <span class="sb">`</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="p">|</span> tr <span class="s1">','</span> <span class="s1">' '</span><span class="sb">`</span>
+    <span class="k">for</span> numbers in <span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="p">|</span> tr <span class="s1">&#39;,&#39;</span> <span class="s1">&#39; &#39;</span><span class="sb">`</span>
     <span class="k">do</span>
-        <span class="nv">nf</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$numbers</span><span class="s2">"</span> <span class="p">|</span> awk -F<span class="s2">"-"</span> <span class="s1">'{print NF}'</span><span class="sb">`</span>
+        <span class="nv">nf</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$numbers</span><span class="s2">&quot;</span> <span class="p">|</span> awk -F<span class="s2">&quot;-&quot;</span> <span class="s1">&#39;{print NF}&#39;</span><span class="sb">`</span>
         <span class="k">if</span> <span class="o">[</span> <span class="nv">$nf</span> -ne <span class="m">1</span> -a <span class="nv">$nf</span> -ne <span class="m">2</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
             <span class="k">return</span> 1
         <span class="k">fi</span>
-        <span class="nv">begin</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$numbers</span><span class="s2">"</span> <span class="p">|</span> awk -F<span class="s2">"-"</span> <span class="s1">'{print $1}'</span><span class="sb">`</span>
-        <span class="nv">end</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$numbers</span><span class="s2">"</span> <span class="p">|</span> awk -F<span class="s2">"-"</span> <span class="s1">'{print $2}'</span><span class="sb">`</span>
-        <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$end</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-            sed -n <span class="nv">$begin</span><span class="s1">'p'</span> <span class="nv">$diff_file</span> &gt;&gt; <span class="nv">$tmp_file</span>
+        <span class="nv">begin</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$numbers</span><span class="s2">&quot;</span> <span class="p">|</span> awk -F<span class="s2">&quot;-&quot;</span> <span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
+        <span class="nv">end</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$numbers</span><span class="s2">&quot;</span> <span class="p">|</span> awk -F<span class="s2">&quot;-&quot;</span> <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+        <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$end</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+            sed -n <span class="nv">$begin</span><span class="s1">&#39;p&#39;</span> <span class="nv">$diff_file</span> &gt;&gt; <span class="nv">$tmp_file</span>
         <span class="k">else</span>
-        <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$end</span><span class="s2">"</span> -lt <span class="nv">$begin</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$end</span><span class="s2">&quot;</span> -lt <span class="nv">$begin</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
             <span class="k">return</span> 1
         <span class="k">fi</span>
-        sed -n <span class="nv">$begin</span><span class="s1">','</span><span class="nv">$end</span><span class="s1">'p'</span> <span class="nv">$diff_file</span> &gt;&gt; <span class="nv">$tmp_file</span>
+        sed -n <span class="nv">$begin</span><span class="s1">&#39;,&#39;</span><span class="nv">$end</span><span class="s1">&#39;p&#39;</span> <span class="nv">$diff_file</span> &gt;&gt; <span class="nv">$tmp_file</span>
         <span class="k">fi</span>
         <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
         <span class="k">return</span> 1
         <span class="k">fi</span>
     <span class="k">done</span>
-    awk -v <span class="nv">dir1</span><span class="o">=</span><span class="nv">$arg1</span> -v <span class="nv">dir2</span><span class="o">=</span><span class="nv">$arg2</span> <span class="s1">'{</span>
+    awk -v <span class="nv">dir1</span><span class="o">=</span><span class="nv">$arg1</span> -v <span class="nv">dir2</span><span class="o">=</span><span class="nv">$arg2</span> <span class="s1">&#39;{</span>
 <span class="s1">    if (NR==1)</span>
 <span class="s1">        {</span>
-<span class="s1">        printf("edit %s/%s\nvertical diffsplit %s/%s\n", dir1, $0, dir2, $0)</span>
+<span class="s1">        printf(&quot;edit %s/%s\nvertical diffsplit %s/%s\n&quot;, dir1, $0, dir2, $0)</span>
 <span class="s1">        }</span>
 <span class="s1">        else</span>
 <span class="s1">        {</span>
-<span class="s1">        printf("tabnew %s/%s\nvertical diffsplit %s/%s\n", dir1, $0, dir2, $0)</span>
+<span class="s1">        printf(&quot;tabnew %s/%s\nvertical diffsplit %s/%s\n&quot;, dir1, $0, dir2, $0)</span>
 <span class="s1">        }</span>
-<span class="s1">    }'</span> <span class="nv">$tmp_file</span>
+<span class="s1">    }&#39;</span> <span class="nv">$tmp_file</span>
 <span class="o">}</span>
 
 <span class="c1">#############################################################</span>
 <span class="c1"># 获取diff info</span>
 <span class="c1">#############################################################</span>
-<span class="k">for</span> file in <span class="sb">`</span>find <span class="nv">$arg1</span> <span class="p">|</span> grep -v <span class="s2">"/\."</span> <span class="p">|</span> grep -v <span class="s2">"^\."</span><span class="sb">`</span>
+<span class="k">for</span> file in <span class="sb">`</span>find <span class="nv">$arg1</span> <span class="p">|</span> grep -v <span class="s2">&quot;/\.&quot;</span> <span class="p">|</span> grep -v <span class="s2">&quot;^\.&quot;</span><span class="sb">`</span>
 <span class="k">do</span>
     <span class="nv">file_relative_name</span><span class="o">=</span><span class="si">${</span><span class="nv">file</span><span class="p">#</span><span class="nv">$arg1</span><span class="p">/</span><span class="si">}</span>
-    file <span class="nv">$file</span> <span class="p">|</span> grep -Eq <span class="s2">"text"</span>
+    file <span class="nv">$file</span> <span class="p">|</span> grep -Eq <span class="s2">&quot;text&quot;</span>
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
         <span class="k">continue</span>
     <span class="k">fi</span>
     <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$arg2</span>/<span class="nv">$file_relative_name</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-        file <span class="nv">$arg2</span>/<span class="nv">$file_relative_name</span> <span class="p">|</span> grep -Eq <span class="s2">"text"</span>
+        file <span class="nv">$arg2</span>/<span class="nv">$file_relative_name</span> <span class="p">|</span> grep -Eq <span class="s2">&quot;text&quot;</span>
         <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
             <span class="k">continue</span>
         <span class="k">fi</span>
         <span class="nv">md5_1</span><span class="o">=</span><span class="sb">`</span>get_file_md5 <span class="nv">$file</span><span class="sb">`</span>
         <span class="nv">md5_2</span><span class="o">=</span><span class="sb">`</span>get_file_md5 <span class="nv">$arg2</span>/<span class="nv">$file_relative_name</span><span class="sb">`</span>
-        <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$md5_1</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$md5_2</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+        <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$md5_1</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$md5_2</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
             <span class="k">continue</span>
         <span class="k">fi</span>
         <span class="c1">## file not same</span>
-        <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$file_relative_name</span><span class="s2">"</span> &gt;&gt; <span class="nv">$tmp_dir</span>/diff_file
+        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$file_relative_name</span><span class="s2">&quot;</span> &gt;&gt; <span class="nv">$tmp_dir</span>/diff_file
     <span class="k">else</span>
-        <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$file_relative_name</span><span class="s2">"</span> &gt;&gt; <span class="nv">$tmp_dir</span>/A_ony_file
+        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$file_relative_name</span><span class="s2">&quot;</span> &gt;&gt; <span class="nv">$tmp_dir</span>/A_ony_file
     <span class="k">fi</span>
 <span class="k">done</span>
 
@@ -414,21 +413,21 @@ mkdir -p <span class="nv">$tmp_dir</span> <span class="o">||</span> <span class=
 show_diff <span class="nv">$tmp_dir</span>/diff_file
 <span class="k">while</span> <span class="nb">true</span>
 <span class="k">do</span>
-    <span class="nb">echo</span> -n <span class="s2">"Please choose file number list (like this:1,3-4,5):"</span>
+    <span class="nb">echo</span> -n <span class="s2">&quot;Please choose file number list (like this:1,3-4,5):&quot;</span>
     <span class="nb">read</span> value
-    <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"s"</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"S"</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;S&quot;</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
         show_diff <span class="nv">$tmp_dir</span>/diff_file
         <span class="k">continue</span>
-    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"q"</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"Q"</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;q&quot;</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;Q&quot;</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
         myexit
-    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"a"</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"A"</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-        <span class="nv">value</span><span class="o">=</span><span class="s2">"1-</span>$<span class="s2">"</span>
+    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+        <span class="nv">value</span><span class="o">=</span><span class="s2">&quot;1-</span>$<span class="s2">&quot;</span>
     <span class="k">fi</span>
-    <span class="nv">vim_script</span><span class="o">=</span><span class="sb">`</span>check_value <span class="nv">$tmp_dir</span>/diff_file <span class="s2">"</span><span class="nv">$value</span><span class="s2">"</span> 2&gt;/dev/null<span class="sb">`</span>
+    <span class="nv">vim_script</span><span class="o">=</span><span class="sb">`</span>check_value <span class="nv">$tmp_dir</span>/diff_file <span class="s2">&quot;</span><span class="nv">$value</span><span class="s2">&quot;</span> 2&gt;/dev/null<span class="sb">`</span>
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">"invalid parameter[</span><span class="nv">$value</span><span class="s2">]!"</span>
+        <span class="nb">echo</span> <span class="s2">&quot;invalid parameter[</span><span class="nv">$value</span><span class="s2">]!&quot;</span>
     <span class="k">else</span>
-        vim -c <span class="s2">"</span><span class="nv">$vim_script</span><span class="s2">"</span>
+        vim -c <span class="s2">&quot;</span><span class="nv">$vim_script</span><span class="s2">&quot;</span>
     <span class="k">fi</span>
 <span class="k">done</span>
 </pre></div>

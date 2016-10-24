@@ -70,49 +70,42 @@
 </div>
 
 <div class="row-fluid">
-    <div class="span2 table-of-content">
-        <nav>
-        <h4>Contents</h4>
-        <div class="toc">
+    <div class="span8 offset2 article-content">
+            
+            <div class="toc">
 <ul></ul>
 </div>
-        </nav>
-    </div>
-    <div class="span8 article-content">
-
-            
-            
 <p>wordpress博客里有两种类型的网页，一种叫文章，一种叫页面（page），文章就是你发表的每篇博客所在的网页，页面就是你网站导航栏里的那些链接，比如“首页”，“关于我”这样的网页，这种网页的特点是集中展示某一类信息，比如首页展示每篇博客的摘要，“关于我”展示博主简介等等，自定义文章列表毫无疑问也是属于这一类的  </p>
 <p>page类型的网页都是根据模板生成的，wordpress默认没有这一类模板，因此需要自己写一个PHP脚本，首先我们找到模板所在的目录，假设你的wordpress所在目录为/var/www，那么模板脚本在/var/www/wp-content/themes/your_theme，其中your_theme是你所使用的主体包，在里面建立一个文件page-allpost.php，内容如下</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
     <span class="nx">get_header</span><span class="p">();</span>
 <span class="cp">?&gt;</span>
-<span class="nt">&lt;style</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;style</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
 #table-allpost{border-collapse:collapse;}
 #table-allpost td,#table-allpost th{border:1px solid #98bf21;padding:3px 7px 2px 7px;text-align:center;}
 #table-allpost th{font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;background-color:#A7C942;color:#ffffff;}
 #table-allpost td{border:1px dotted #98bf21;}
 #table-allpost .td-left{text-align:left;}
 <span class="nt">&lt;/style&gt;</span>
-<span class="nt">&lt;head&gt;&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;&lt;/head&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"padding-bottom:10px"</span><span class="nt">&gt;&lt;strong&gt;</span>全部文章<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"page-allpost"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"table-allpost"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;&lt;/head&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;padding-bottom:10px&quot;</span><span class="nt">&gt;&lt;strong&gt;</span>全部文章<span class="nt">&lt;/strong&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;page-allpost&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">&quot;table-allpost&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;tr&gt;</span>
 <span class="nt">&lt;th&gt;&lt;strong&gt;</span>编号<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
 <span class="nt">&lt;th&gt;&lt;strong&gt;</span>发布时间<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
 <span class="nt">&lt;th&gt;&lt;strong&gt;</span>标题<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
 <span class="nt">&lt;/tr&gt;</span>
 <span class="cp">&lt;?php</span> 
-    <span class="nv">$Count_Posts</span> <span class="o">=</span> <span class="nx">wp_count_posts</span><span class="p">();</span> <span class="nv">$Num_Posts</span> <span class="o">=</span> <span class="nv">$Count_Posts</span><span class="o">-&gt;</span><span class="na">publish</span><span class="p">;</span> <span class="nx">query_posts</span><span class="p">(</span><span class="s1">'posts_per_page=-1&amp;caller_get_posts=1'</span> <span class="p">);</span>
+    <span class="nv">$Count_Posts</span> <span class="o">=</span> <span class="nx">wp_count_posts</span><span class="p">();</span> <span class="nv">$Num_Posts</span> <span class="o">=</span> <span class="nv">$Count_Posts</span><span class="o">-&gt;</span><span class="na">publish</span><span class="p">;</span> <span class="nx">query_posts</span><span class="p">(</span><span class="s1">&#39;posts_per_page=-1&amp;caller_get_posts=1&#39;</span> <span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span> <span class="nx">have_posts</span><span class="p">()</span> <span class="p">)</span> <span class="o">:</span> <span class="nx">the_post</span><span class="p">();</span>
-        <span class="nv">$Num</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">"%03d"</span><span class="p">,</span> <span class="nv">$Num_Posts</span><span class="p">);</span>
-        <span class="k">echo</span> <span class="s1">'&lt;tr&gt;'</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="s1">'&lt;th&gt;'</span><span class="o">.</span><span class="nv">$Num</span><span class="o">.</span><span class="s1">'&lt;/th&gt;'</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="s1">'&lt;td&gt;'</span><span class="p">;</span><span class="nx">the_time</span><span class="p">(</span><span class="nx">get_option</span><span class="p">(</span> <span class="s1">'date_format'</span> <span class="p">));</span>
-        <span class="k">echo</span> <span class="s1">'&lt;/td&gt;&lt;td class="td-left";&gt;&lt;a href="'</span><span class="p">;</span> <span class="nx">the_permalink</span><span class="p">();</span>
-        <span class="k">echo</span> <span class="s1">'" title="'</span><span class="o">.</span><span class="nx">esc_attr</span><span class="p">(</span> <span class="nx">get_the_title</span><span class="p">()</span> <span class="p">)</span><span class="o">.</span><span class="s1">'"&gt;'</span><span class="p">;</span> <span class="nx">the_title</span><span class="p">();</span>
-        <span class="k">echo</span> <span class="s1">'&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;'</span><span class="p">;</span>
+        <span class="nv">$Num</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%03d&quot;</span><span class="p">,</span> <span class="nv">$Num_Posts</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;tr&gt;&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;th&gt;&#39;</span><span class="o">.</span><span class="nv">$Num</span><span class="o">.</span><span class="s1">&#39;&lt;/th&gt;&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;td&gt;&#39;</span><span class="p">;</span><span class="nx">the_time</span><span class="p">(</span><span class="nx">get_option</span><span class="p">(</span> <span class="s1">&#39;date_format&#39;</span> <span class="p">));</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;/td&gt;&lt;td class=&quot;td-left&quot;;&gt;&lt;a href=&quot;&#39;</span><span class="p">;</span> <span class="nx">the_permalink</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s1">&#39;&quot; title=&quot;&#39;</span><span class="o">.</span><span class="nx">esc_attr</span><span class="p">(</span> <span class="nx">get_the_title</span><span class="p">()</span> <span class="p">)</span><span class="o">.</span><span class="s1">&#39;&quot;&gt;&#39;</span><span class="p">;</span> <span class="nx">the_title</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">;</span>
         <span class="nv">$Num_Posts</span><span class="o">--</span><span class="p">;</span>
     <span class="k">endwhile</span><span class="p">;</span> <span class="nx">wp_reset_query</span><span class="p">();</span>
  <span class="cp">?&gt;</span>
@@ -125,8 +118,10 @@
     <span class="nx">get_footer</span><span class="p">();</span>
 <span class="cp">?&gt;</span>
 </pre></div>
-<p>保存好之后，再去wordpress后台新建一个页面，注意不是发表文章，而是在仪表盘的“页面”一栏里选择新建页面，标题写“全部文章”，内容为空，别名（固定链接）设置为“<font color="red">allpost</font>”，注意这里的别名必须和之前的脚本名page-allpost.php对应。点击保存，然后刷新你的站点首页，看看导航栏里是不是有了“全部文章”选项，点击进去看看是不是如下效果  </p>
-<p><img alt="image" src="http://littlewhite.us/pic/allpost_screenshot.png"/></p>
+
+
+<p>保存好之后，再去wordpress后台新建一个页面，注意不是发表文章，而是在仪表盘的“页面”一栏里选择新建页面，标题写“全部文章”，内容为空，别名（固定链接）设置为“<font color="red" >allpost</font>”，注意这里的别名必须和之前的脚本名page-allpost.php对应。点击保存，然后刷新你的站点首页，看看导航栏里是不是有了“全部文章”选项，点击进去看看是不是如下效果  </p>
+<p><img alt="image" src="http://littlewhite.us/pic/allpost_screenshot.png" /></p>
             
             
             <hr/>

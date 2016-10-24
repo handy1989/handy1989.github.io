@@ -14,13 +14,13 @@
 
 <meta property="og:title" content="C++管理读写锁的一种实现方法 "/>
 <meta property="og:url" content="/C++管理读写锁的一种实现方法.html" />
-<meta property="og:description" content="读写锁是一种常用的线程同步机制，在多线程环境下访问同一内存区域时往往会用到，本篇不是介绍读写锁的原理，而是在假设读者都知道读写锁的基本使用方式的前提下，介绍一种管理读写锁的方法 读写锁的基本使用¶ === 为了读起来好理解，还是先介绍一下基本概念和使用 基本概念 读写锁有三种状态：读模式加锁，写模式加锁，不加锁 读写锁的使用规则 在当前没有写锁的情况下，读者可以立马获取读锁 在当前没有读锁和写锁的情况下，写者可以立马获取写锁 也就是说，可以多个读者同时获取读锁，而写者只能有一个，且在写的时候不能读 基本使用 初始化和销毁 int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock, const pthread_rwlockattr_t *restrict attr); int pthread_rwlock_destroy(pthread_rwlock_t *rwlock); 读和写 int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock); int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock); 另外还有非阻塞模式的读写 int pthread_rwlock_trywrlock(pthread_rwlock_t ..." />
+<meta property="og:description" content="读写锁的基本使用 读写锁的管理 总结 读写锁是一种常用的线程同步机制，在多线程环境下访问同一内存区域时往往会用到，本篇不是介绍读写锁的原理，而是在假设读者都知道读写锁的基本使用方式的前提下，介绍一种管理读写锁的方法 读写锁的基本使用¶ === 为了读起来好理解，还是先介绍一下基本概念和使用 基本概念 读写锁有三种状态：读模式加锁，写模式加锁，不加锁 读写锁的使用规则 在当前没有写锁的情况下，读者可以立马获取读锁 在当前没有读锁和写锁的情况下，写者可以立马获取写锁 也就是说，可以多个读者同时获取读锁，而写者只能有一个，且在写的时候不能读 基本使用 初始化和销毁 int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock, const pthread_rwlockattr_t *restrict attr); int pthread_rwlock_destroy(pthread_rwlock_t *rwlock); 读和写 int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock); int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock); 另外还有非阻塞模式的读写 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2014-07-01T00:00:00+08:00" />
 <meta property="" content="2014-07-01T00:00:00+08:00" />
 <meta name="twitter:title" content="C++管理读写锁的一种实现方法 ">
-<meta name="twitter:description" content="读写锁是一种常用的线程同步机制，在多线程环境下访问同一内存区域时往往会用到，本篇不是介绍读写锁的原理，而是在假设读者都知道读写锁的基本使用方式的前提下，介绍一种管理读写锁的方法 读写锁的基本使用¶ === 为了读起来好理解，还是先介绍一下基本概念和使用 基本概念 读写锁有三种状态：读模式加锁，写模式加锁，不加锁 读写锁的使用规则 在当前没有写锁的情况下，读者可以立马获取读锁 在当前没有读锁和写锁的情况下，写者可以立马获取写锁 也就是说，可以多个读者同时获取读锁，而写者只能有一个，且在写的时候不能读 基本使用 初始化和销毁 int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock, const pthread_rwlockattr_t *restrict attr); int pthread_rwlock_destroy(pthread_rwlock_t *rwlock); 读和写 int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock); int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock); 另外还有非阻塞模式的读写 int pthread_rwlock_trywrlock(pthread_rwlock_t ...">
+<meta name="twitter:description" content="读写锁的基本使用 读写锁的管理 总结 读写锁是一种常用的线程同步机制，在多线程环境下访问同一内存区域时往往会用到，本篇不是介绍读写锁的原理，而是在假设读者都知道读写锁的基本使用方式的前提下，介绍一种管理读写锁的方法 读写锁的基本使用¶ === 为了读起来好理解，还是先介绍一下基本概念和使用 基本概念 读写锁有三种状态：读模式加锁，写模式加锁，不加锁 读写锁的使用规则 在当前没有写锁的情况下，读者可以立马获取读锁 在当前没有读锁和写锁的情况下，写者可以立马获取写锁 也就是说，可以多个读者同时获取读锁，而写者只能有一个，且在写的时候不能读 基本使用 初始化和销毁 int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock, const pthread_rwlockattr_t *restrict attr); int pthread_rwlock_destroy(pthread_rwlock_t *rwlock); 读和写 int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock); int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock); 另外还有非阻塞模式的读写 ...">
 
         <title>C++管理读写锁的一种实现方法  · LittleWhite
 </title>
@@ -70,27 +70,20 @@
 </div>
 
 <div class="row-fluid">
-    <div class="span2 table-of-content">
-        <nav>
-        <h4>Contents</h4>
-        <div class="toc">
+    <div class="span8 offset2 article-content">
+            
+            <div class="toc">
 <ul>
 <li><a href="#_1">读写锁的基本使用</a></li>
 <li><a href="#_2">读写锁的管理</a></li>
 <li><a href="#_3">总结</a></li>
 </ul>
 </div>
-        </nav>
-    </div>
-    <div class="span8 article-content">
-
-            
-            
 <p>读写锁是一种常用的线程同步机制，在多线程环境下访问同一内存区域时往往会用到，本篇不是介绍读写锁的原理，而是在假设读者都知道读写锁的基本使用方式的前提下，介绍一种管理读写锁的方法  </p>
-<h3 id="_1">读写锁的基本使用<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<h3 id="_1">读写锁的基本使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>===
 为了读起来好理解，还是先介绍一下基本概念和使用  </p>
-<p><strong>基本概念</strong> </p>
+<p><strong>基本概念</strong>  </p>
 <p>读写锁有三种状态：读模式加锁，写模式加锁，不加锁</p>
 <p>读写锁的使用规则  </p>
 <ol>
@@ -98,22 +91,30 @@
 <li>在当前没有读锁和写锁的情况下，写者可以立马获取写锁</li>
 </ol>
 <p>也就是说，可以多个读者同时获取读锁，而写者只能有一个，且在写的时候不能读</p>
-<p><strong>基本使用</strong> </p>
+<p><strong>基本使用</strong>  </p>
 <p>初始化和销毁</p>
 <div class="highlight"><pre><span></span>int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock, const pthread_rwlockattr_t *restrict attr);
 int pthread_rwlock_destroy(pthread_rwlock_t *rwlock);
 </pre></div>
+
+
 <p>读和写</p>
 <div class="highlight"><pre><span></span>int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock);
 int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock);
 </pre></div>
+
+
 <p>另外还有非阻塞模式的读写</p>
 <div class="highlight"><pre><span></span>int pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock);
 int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
 </pre></div>
+
+
 <p>解锁</p>
 <div class="highlight"><pre><span></span>int pthread_rwlock_unlock(pthread_rwlock_t *rwlock);
 </pre></div>
+
+
 <p><strong>示例</strong></p>
 <p>test.cpp</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -134,7 +135,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
         <span class="p">{</span>
             <span class="c1">// read</span>
             <span class="n">pthread_rwlock_rdlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_mutex</span><span class="p">);</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">"read array[%d]:%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">g_array</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;read array[%d]:%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">g_array</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
         <span class="p">}</span>
         <span class="k">else</span>
         <span class="p">{</span>
@@ -142,7 +143,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
             <span class="n">pthread_rwlock_wrlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_mutex</span><span class="p">);</span>
             <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span>
             <span class="n">g_array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
-            <span class="n">printf</span><span class="p">(</span><span class="s">"write array[%d]:%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;write array[%d]:%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="n">pthread_rwlock_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_mutex</span><span class="p">);</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -166,11 +167,15 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>这段代码可以直接编译运行</p>
 <div class="highlight"><pre><span></span>g++ test.cpp -o test
 ./test
 </pre></div>
-<h3 id="_2">读写锁的管理<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+
+
+<h3 id="_2">读写锁的管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>===
 通过上面的代码我们可以了解读写锁的基本使用方法，在需要读的时候调用读锁命令，需要写的时候调用写锁命令，读写完后调用解锁命令，这样使用虽然简单易懂，但是有时候会让代码很繁琐，比如当你调用了读锁命令后，程序可能会有多个出口，如果不使用goto语句的话（goto语句在某些编程规范里是明令禁止的，苹果曾经因为goto语句导致SSL连接验证的bug，有一篇文章分析得很好，可以参考一下 <a href="http://mobile.51cto.com/hot-431352.htm">由苹果的低级Bug想到的编程思考</a>），那你需要在每个出口都调用一次解锁操作，这样就失去了程序的优雅性，我们用下面的伪代码片段来描述这种情况</p>
 <div class="highlight"><pre><span></span>int func()
@@ -196,6 +201,8 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
     return 0;
 }
 </pre></div>
+
+
 <p>这个程序有多个出口，在每个出口我们都要手动调用一次解锁，很显然这不是我们期望的样子，那理想的情况应该是怎样的呢，它应该是只需显式的调用一次加锁操作，在每个出口会自动调用解锁，于是我们很容易想到用类来管理，在程序入口定义一个类对象，在构造函数里调用加锁操作，当程序return后，类对象会自动析构，我们在析构函数里实现解锁，这样就不用每次手动去调用解锁操作了。管理读写锁的类的实现如下，我们把代码放在头文件rwlock.h下</p>
 <div class="highlight"><pre><span></span><span class="cp">#ifndef _RWLOCK_H_</span>
 <span class="cp">#define _RWLOCK_H_</span>
@@ -253,7 +260,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
             <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">m_locker</span><span class="p">.</span><span class="n">rdlock</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
             <span class="p">{</span>
-                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"lock failed, ret: "</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span><span class="p">;</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;lock failed, ret: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">else</span>
@@ -261,7 +268,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
             <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">m_locker</span><span class="p">.</span><span class="n">wrlock</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
             <span class="p">{</span>
-                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"lock failed, ret: "</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span><span class="p">;</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;lock failed, ret: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -270,7 +277,7 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
         <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">m_locker</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"unlock failed, ret: "</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;unlock failed, ret: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">private</span><span class="o">:</span>
@@ -278,6 +285,8 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
 <span class="p">};</span>
 <span class="cp">#endif</span>
 </pre></div>
+
+
 <p>注意类RWLockManager的成员变量m_lock必须是一个RWLock类型的引用</p>
 <p>这样在使用起来的时候就很简单明了，还是上面那份伪代码，使用读写锁管理类之后如下</p>
 <div class="highlight"><pre><span></span><span class="nt">int</span> <span class="nt">func</span><span class="o">()</span>
@@ -300,7 +309,9 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
     <span class="nt">return</span> <span class="nt">0</span><span class="o">;</span>
 <span class="err">}</span>
 </pre></div>
-<h3 id="_3">总结<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+
+
+<h3 id="_3">总结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>===
 以上就是管理读写锁的一种方式，只要稍微花点心思就可以让代码变得简洁清晰，程序的根本目的是消除重复劳动，如果我们在写代码的时候要重复写了很多遍某些语句，那么我们就应该考虑是不是设计一个方法消除这种重复。</p>
             
