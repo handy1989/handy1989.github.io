@@ -349,7 +349,7 @@ ul.multi-parts-list li.active-part {
     text-decoration: none;
 }
 .article-content img {
-    border: 2px solid #EEE;
+//    border: 2px solid #EEE;
     padding: 5px;
 }
 p#post-share-links {
