@@ -14,13 +14,13 @@
 
 <meta property="og:title" content="Python import机制备忘笔记 "/>
 <meta property="og:url" content="/Python import机制备忘笔记.html" />
-<meta property="og:description" content="import语法 import步骤 嵌套import 包的import 相对导入和绝对导入 python的模块有两种组织方式，一种是单纯的python文件，文件名就是模块名，一种是包，包是一个包含了若干python文件的目录，目录下必须有一个文件__init__.py，这样目录名字就是模块名，包里的python文件也可以通过包名.文件名的方式import import语法¶ import语法有两种 直接import模块import Module import Module as xx 从模块import对象（下级模块，类，函数，变量等） from Module import Name from Module immport Name as yy as语法是用来设置对象（这里用对象泛指模块，类，函数等等）别名，import将对象名字引入了当前文件的名字空间 假设有如下目录结构 ├── A ..." />
+<meta property="og:description" content="import语法 import步骤 嵌套import 包的import 相对导入和绝对导入 python的模块有两种组织方式，一种是单纯的python文件，文件名就是模块名，一种是包，包是一个包含了若干python文件的目录，目录下必须有一个文件__init__.py，这样目录名字就是模块名，包里的python文件也可以通过包名.文件名的方式import import语法¶ import语法有两种 直接import模块 import Module import Module as xx 从模块import对象（下级模块，类，函数，变量等） from Module import Name from Module immport Name as yy as语法是用来设置对象（这里用对象泛指模块，类，函数等等）别名，import将对象名字引入了当前文件的名字空间 假设有如下目录结构 ├── A ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2016-04-07T00:00:00+08:00" />
 <meta property="" content="2016-04-07T00:00:00+08:00" />
 <meta name="twitter:title" content="Python import机制备忘笔记 ">
-<meta name="twitter:description" content="import语法 import步骤 嵌套import 包的import 相对导入和绝对导入 python的模块有两种组织方式，一种是单纯的python文件，文件名就是模块名，一种是包，包是一个包含了若干python文件的目录，目录下必须有一个文件__init__.py，这样目录名字就是模块名，包里的python文件也可以通过包名.文件名的方式import import语法¶ import语法有两种 直接import模块import Module import Module as xx 从模块import对象（下级模块，类，函数，变量等） from Module import Name from Module immport Name as yy as语法是用来设置对象（这里用对象泛指模块，类，函数等等）别名，import将对象名字引入了当前文件的名字空间 假设有如下目录结构 ├── A ...">
+<meta name="twitter:description" content="import语法 import步骤 嵌套import 包的import 相对导入和绝对导入 python的模块有两种组织方式，一种是单纯的python文件，文件名就是模块名，一种是包，包是一个包含了若干python文件的目录，目录下必须有一个文件__init__.py，这样目录名字就是模块名，包里的python文件也可以通过包名.文件名的方式import import语法¶ import语法有两种 直接import模块 import Module import Module as xx 从模块import对象（下级模块，类，函数，变量等） from Module import Name from Module immport Name as yy as语法是用来设置对象（这里用对象泛指模块，类，函数等等）别名，import将对象名字引入了当前文件的名字空间 假设有如下目录结构 ├── A ...">
 
         <title>Python import机制备忘笔记  · LittleWhite
 </title>
@@ -85,18 +85,21 @@
 <h3 id="import">import语法<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <p>import语法有两种</p>
 <ol>
-<li>直接import模块<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Module</span>
+<li>
+<p>直接import模块</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Module</span>
 <span class="kn">import</span> <span class="nn">Module</span> <span class="kn">as</span> <span class="nn">xx</span>
 </pre></div>
 
 
-<ol>
+</li>
 <li>
 <p>从模块import对象（下级模块，类，函数，变量等）</p>
-<p>from Module import Name
-from Module immport Name as yy</p>
-</li>
-</ol>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Module</span> <span class="kn">import</span> <span class="n">Name</span>
+<span class="kn">from</span> <span class="nn">Module</span> <span class="nn">immport</span> <span class="nn">Name</span> <span class="nn">as</span> <span class="nn">yy</span>
+</pre></div>
+
+
 </li>
 </ol>
 <p>as语法是用来设置对象（这里用对象泛指模块，类，函数等等）别名，import将对象名字引入了当前文件的名字空间</p>
@@ -152,7 +155,7 @@ from Module immport Name as yy</p>
 <p>当一个目录下有<code>__init__.py</code>文件时，该目录就是一个python的包 </p>
 <p>import包和import单个文件是一样的，我们可以这样类比：  </p>
 <blockquote>
-<p>import单个文件时，文件里的类，函数，变量都可以作为import的对象
+<p>import单个文件时，文件里的类，函数，变量都可以作为import的对象<br />
 import包时，包里的子包，文件，以及__init__.py里的类，函数，变量都可以作为import的对象</p>
 </blockquote>
 <p>假设有如下目录结构</p>
