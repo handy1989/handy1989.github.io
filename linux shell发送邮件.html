@@ -14,13 +14,13 @@
 
 <meta property="og:title" content="linux shell发送邮件 "/>
 <meta property="og:url" content="/linux shell发送邮件.html" />
-<meta property="og:description" content="一封最简单的邮件 邮件的格式 邮件标题使用中文 邮件内容使用html 一封最简单的邮件¶ echo -e &#34;To: handy1989@qq.com\nCC: handy1989@qq.com\nFrom: handy&lt;handy@test.com&gt;\nSubject: test\n\nhello world&#34; | sendmail -t 看上去很复杂，其实就是sendmail程序从标准输入读取邮件源码，-t参数表示从邮件源码提取收件人信息，然后发送到收件人的邮件服务器，我们稍做整理，将邮件源码保存在email.txt中如下 To: handy1989@qq.com CC: handy1989@qq.com From: handy&lt;handy@test.com&gt; Subject: test hello ..." />
+<meta property="og:description" content="一封最简单的邮件 邮件的格式 邮件标题使用中文 邮件内容使用html 一封最简单的邮件¶ echo -e &#34;To: handy1989@qq.com\nCC: handy1989@qq.com\nFrom: handy&lt;handy@test.com&gt;\nSubject: test\n\nhello world&#34; | sendmail -t 看上去有点复杂，其实就是sendmail程序从标准输入读取邮件源码，-t参数表示从邮件源码提取收件人信息，然后发送到收件人的邮件服务器，我们稍做整理，将邮件源码保存在email.txt中如下 To: handy1989@qq.com CC: handy1989@qq.com From: handy&lt;handy@test.com&gt; Subject: test hello ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2016-11-23T00:00:00+08:00" />
 <meta property="" content="2016-11-23T00:00:00+08:00" />
 <meta name="twitter:title" content="linux shell发送邮件 ">
-<meta name="twitter:description" content="一封最简单的邮件 邮件的格式 邮件标题使用中文 邮件内容使用html 一封最简单的邮件¶ echo -e &#34;To: handy1989@qq.com\nCC: handy1989@qq.com\nFrom: handy&lt;handy@test.com&gt;\nSubject: test\n\nhello world&#34; | sendmail -t 看上去很复杂，其实就是sendmail程序从标准输入读取邮件源码，-t参数表示从邮件源码提取收件人信息，然后发送到收件人的邮件服务器，我们稍做整理，将邮件源码保存在email.txt中如下 To: handy1989@qq.com CC: handy1989@qq.com From: handy&lt;handy@test.com&gt; Subject: test hello ...">
+<meta name="twitter:description" content="一封最简单的邮件 邮件的格式 邮件标题使用中文 邮件内容使用html 一封最简单的邮件¶ echo -e &#34;To: handy1989@qq.com\nCC: handy1989@qq.com\nFrom: handy&lt;handy@test.com&gt;\nSubject: test\n\nhello world&#34; | sendmail -t 看上去有点复杂，其实就是sendmail程序从标准输入读取邮件源码，-t参数表示从邮件源码提取收件人信息，然后发送到收件人的邮件服务器，我们稍做整理，将邮件源码保存在email.txt中如下 To: handy1989@qq.com CC: handy1989@qq.com From: handy&lt;handy@test.com&gt; Subject: test hello ...">
 
         <title>linux shell发送邮件  · LittleWhite
 </title>
@@ -85,7 +85,7 @@
 </pre></div>
 
 
-<p>看上去很复杂，其实就是sendmail程序从标准输入读取邮件源码，-t参数表示从邮件源码提取收件人信息，然后发送到收件人的邮件服务器，我们稍做整理，将邮件源码保存在email.txt中如下</p>
+<p>看上去有点复杂，其实就是sendmail程序从标准输入读取邮件源码，-t参数表示从邮件源码提取收件人信息，然后发送到收件人的邮件服务器，我们稍做整理，将邮件源码保存在email.txt中如下</p>
 <div class="highlight"><pre><span></span><span class="n">To</span><span class="o">:</span> <span class="n">handy1989</span><span class="err">@</span><span class="n">qq</span><span class="o">.</span><span class="na">com</span>
 <span class="n">CC</span><span class="o">:</span> <span class="n">handy1989</span><span class="err">@</span><span class="n">qq</span><span class="o">.</span><span class="na">com</span>
 <span class="n">From</span><span class="o">:</span> <span class="n">handy</span><span class="o">&lt;</span><span class="n">handy</span><span class="err">@</span><span class="n">test</span><span class="o">.</span><span class="na">com</span><span class="o">&gt;</span>
