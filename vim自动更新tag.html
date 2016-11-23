@@ -70,11 +70,17 @@
 </div>
 
 <div class="row-fluid">
-    <div class="span8 offset2 article-content">
-            
-            <div class="toc">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
 <ul></ul>
 </div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+            
+            
 <p>用vim浏览C/C++代码时可以用ctags生成tag文件，这样可以很方便跳转到函数定义的地方，这个功能几乎所有的图形界面编辑器都有，比如VS，source insight等等，但是vim的tags文件是静态的，也就是说如果我们在源代码里新增了一些函数，原来的tags是不会自动更新的，我们也无法跳转到新增的函数定义处，这个问题怎么怎么办呢</p>
 <p>我在网上搜索了很多地方，普遍给的方案就是将ctags命令映射到一个快捷键，这样只需要按一下快捷键就会生成新的tags文件，但这样有几个不方便的地方</p>
 <ol>
@@ -97,16 +103,12 @@
 ├── tags
 └── tests
 </pre></div>
-
-
 <p>其中tags文件是对当前目录下的代码生产的tag，其它目录存放的则是你的源代码，这样当我们打开目录下的源代码时，vim就可以根据tags文件来定位变量的位置</p>
 <p>这里的auto_tags目录存放的是自己实现的脚本，它的功能是自动检测当前目录下的源代码是否有更新，如果有，则生产新的tags文件并替换老的，auto_tags目录结构如下</p>
 <div class="highlight"><pre><span></span>├── auto_tags.conf
 ├── auto_tags.sh
 └── run_tags.sh
 </pre></div>
-
-
 <p>auto_tags.conf为配置文件，配置项如下</p>
 <div class="highlight"><pre><span></span>CTAGS=/usr/bin/ctags
 
@@ -117,21 +119,17 @@ tags_dir=../
 source_root=../
 
 # 需要创建tags的目录名，注意只有目录名字，不是路径
-source_dirs=&quot;common message nodes&quot;
+source_dirs="common message nodes"
 
 # 日志相关
 max_log_size=10 # Unit: Mb
-log_file=&quot;auto_tags.log&quot;
+log_file="auto_tags.log"
 </pre></div>
-
-
 <p>将source_dirs变量替换为你需要建立tags的目录名称即可，注意需要用双引号包围，且只写目录名字，不需要添加<code>../</code></p>
 <p>使用方式如下</p>
 <div class="highlight"><pre><span></span> sh ./run_tags.sh start # 启动脚本
  sh ./run_tags.sh stop  # 停止脚本
 </pre></div>
-
-
 <p>核心脚本是auto_tags.sh，至于脚本是如何实现的就不贴出来了，毕竟这只是一个程序员自娱自乐实现的一个小小的功能，它并不完善但简单易用。github地址如下</p>
 <div class="highlight"><pre><span></span>https://github.com/handy1989/vim/tree/master/auto_tags
 </pre></div>

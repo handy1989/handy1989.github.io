@@ -69,11 +69,17 @@
 </div>
 
 <div class="row-fluid">
-    <div class="span8 offset2 article-content">
-            
-            <div class="toc">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
 <ul></ul>
 </div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+            
+            
 <table>
 <thead>
 <tr>
@@ -104,22 +110,22 @@
 </tr>
 <tr>
 <td>-H/--header &lt;header&gt;</td>
-<td>指定请求包头字段 </br>如果有多个字段，可多次使用本参数</td>
-</tr>
+<td>指定请求包头字段 </td></tr></tbody></table>如果有多个字段，可多次使用本参数
+
 <tr>
 <td>-d/—data &lt;data&gt;</td>
-<td>发送post数据(ascii)</br> curl -d "param1=value1&amp;param2=value2"</td>
-</tr>
+<td>发送post数据(ascii)</td></tr> curl -d "param1=value1&amp;param2=value2"
+
 <tr>
-<td>--data-binary &lt;data&gt; </br>—data-binary '@filename'</td>
-<td>发送二进制post数据</br>如果以'@'开头则发送文件内容</td>
-</tr>
+<td>--data-binary &lt;data&gt; </td></tr>—data-binary '@filename'
+<td>发送二进制post数据</td>如果以'@'开头则发送文件内容
+
 <tr>
 <td>-A/—user-agent &lt;agent string&gt;</td>
 <td>设置user-agent</td>
 </tr>
-</tbody>
-</table>
+
+
             
             
             <hr/>
