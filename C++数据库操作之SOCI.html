@@ -14,13 +14,13 @@
 
 <meta property="og:title" content="C++数据库操作之SOCI "/>
 <meta property="og:url" content="/C++数据库操作之SOCI.html" />
-<meta property="og:description" content="SOCI是一个数据库操作的库，并不是ORM库，它仍旧需要用户编写sql语句来操作数据库，只是使用起来会更加方便，主要有以下几个特点 以stream方式输入sql语句 通过into和use语法传递和解析参数 支持连接池，线程安全 由此可见它只是一个轻量级的封装，因此也有更大的灵活性，后端支持oracle，mysql等，后续示例均基于mysql 安装¶ git项目地址https://github.com/SOCI/soci 推荐使用cmake编译 git clone git@github.com:SOCI/soci.git cd soci mkdir build cd build cmake .. -G &#34;Unix Makefiles&#34; -DCMAKE_INSTALL_PREFIX=/opt/third_party/soci make sudo make install 基本查询¶ 假设有如下表单 ..." />
+<meta property="og:description" content="SOCI是一个数据库操作的库，并不是ORM库，它仍旧需要用户编写sql语句来操作数据库，只是使用起来会更加方便，主要有以下几个特点 以stream方式输入sql语句 通过into和use语法传递和解析参数 支持连接池，线程安全 由此可见它只是一个轻量级的封装，因此也有更大的灵活性，后端支持oracle，mysql等，后续示例均基于mysql 安装¶ git项目地址https://github.com/SOCI/soci 推荐使用cmake编译 git clone git@github.com:SOCI/soci.git cd soci mkdir build cd build cmake .. -G &#34;Unix Makefiles&#34; -DCMAKE_INSTALL_PREFIX=/opt/third_party/soci make sudo make install 基本查询 ..." />
 <meta property="og:site_name" content="LittleWhite" />
 <meta property="og:article:author" content="littlewhite" />
 <meta property="og:article:published_time" content="2017-01-22T00:00:00+08:00" />
 <meta property="" content="2017-01-22T00:00:00+08:00" />
 <meta name="twitter:title" content="C++数据库操作之SOCI ">
-<meta name="twitter:description" content="SOCI是一个数据库操作的库，并不是ORM库，它仍旧需要用户编写sql语句来操作数据库，只是使用起来会更加方便，主要有以下几个特点 以stream方式输入sql语句 通过into和use语法传递和解析参数 支持连接池，线程安全 由此可见它只是一个轻量级的封装，因此也有更大的灵活性，后端支持oracle，mysql等，后续示例均基于mysql 安装¶ git项目地址https://github.com/SOCI/soci 推荐使用cmake编译 git clone git@github.com:SOCI/soci.git cd soci mkdir build cd build cmake .. -G &#34;Unix Makefiles&#34; -DCMAKE_INSTALL_PREFIX=/opt/third_party/soci make sudo make install 基本查询¶ 假设有如下表单 ...">
+<meta name="twitter:description" content="SOCI是一个数据库操作的库，并不是ORM库，它仍旧需要用户编写sql语句来操作数据库，只是使用起来会更加方便，主要有以下几个特点 以stream方式输入sql语句 通过into和use语法传递和解析参数 支持连接池，线程安全 由此可见它只是一个轻量级的封装，因此也有更大的灵活性，后端支持oracle，mysql等，后续示例均基于mysql 安装¶ git项目地址https://github.com/SOCI/soci 推荐使用cmake编译 git clone git@github.com:SOCI/soci.git cd soci mkdir build cd build cmake .. -G &#34;Unix Makefiles&#34; -DCMAKE_INSTALL_PREFIX=/opt/third_party/soci make sudo make install 基本查询 ...">
 
         <title>C++数据库操作之SOCI  · LittleWhite
 </title>
@@ -101,7 +101,7 @@
     <div class="span8 article-content">
             
             
-<p>SOCI是一个数据库操作的库，并不是ORM库，它仍旧需要用户编写sql语句来操作数据库，只是使用起来会更加方便，主要有以下几个特点</p>
+<p><a href="http://soci.sourceforge.net/">SOCI</a>是一个数据库操作的库，并不是ORM库，它仍旧需要用户编写sql语句来操作数据库，只是使用起来会更加方便，主要有以下几个特点</p>
 <ol>
 <li>以stream方式输入sql语句</li>
 <li>通过into和use语法传递和解析参数</li>
