@@ -10,7 +10,7 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="gtest, Skill, " />
+<meta name="keywords" content="gtest, Tool, " />
 
 <meta property="og:title" content="gtest "/>
 <meta property="og:url" content="/gtest.html" />
@@ -146,16 +146,16 @@ EXPECT_STRCASENE(str1,str2);
 </pre></div>
 <p><code>EXPECT_EQ(2, Add(1, 1)) &lt;&lt; "Add error";</code>表示在EXPECT_EQ宏比较失败时会打印后面的错误信息</p>
 <p><strong>编译</strong></p>
-<div class="highlight"><pre><span></span>g++ test1.cpp -I/usr/local/include -L/usr/local/lib -lgtest -lpthread
+<div class="highlight"><pre><span></span>g++ test1.cpp -I/usr/local/include -L/usr/local/lib -lgtest -lpthread -o test1
 </pre></div>
 <p>注意编译时需指定pthread库</p>
 <p><strong>运行</strong></p>
-<p><code>./test1 -h</code> 查看参数说明
-<code>./test1 --gtest_list_tests</code> 查看用例
-<code>./test1</code> 运行所有用例
-<code>./test1 --gtest_filter=TestClass.Testname1</code> 运行指定用例
-<code>./test1 --gtest_filter='TestClass.*'</code> 使用通配符
-<code>./test1 --gtest_filter=-TestClass.Testname1</code> 排除指定用例</p>
+<p><code>./test1 -h</code> 查看参数说明<br/>
+<code>./test1 --gtest_list_tests</code> 查看用例<br/>
+<code>./test1</code> 运行所有用例<br/>
+<code>./test1 --gtest_filter=TestClass.Testname1</code> 运行指定用例<br/>
+<code>./test1 --gtest_filter='TestClass.*'</code> 使用通配符<br/>
+<code>./test1 --gtest_filter=-TestClass.Testname1</code> 排除指定用例  </p>
 <h3 id="_5">共享成员变量<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>使用TEST_F宏，宏参数含义和TEST一样，区别是第一个参数必须是已定义的类，每个类对应一组测试用例，可以选择定义如下几组函数</p>
 <ol>
@@ -264,7 +264,7 @@ EXPECT_STRCASENE(str1,str2);
     <span class="k">return</span> <span class="nf">RUN_ALL_TESTS</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
-<p>定义一个类FooEnvironment继承自testing::Environment，并定义SetUp和TeawDown成员函数函数，在main函数里调用testing::AddGlobalTestEnvironment(new FooEnvironment)即可</p>
+<p>定义一个类<code>FooEnvironment</code>继承自<code>testing::Environment</code>，并定义<code>SetUp</code>和<code>TeawDown</code>成员函数函数，在main函数里调用<code>testing::AddGlobalTestEnvironment(new FooEnvironment)</code>即可</p>
             
             
             <hr/>
@@ -287,7 +287,7 @@ EXPECT_STRCASENE(str1,str2);
             </tr>
             <tr>
                 <td>Category</td>
-                <td><a class="category-link" href="/categories.html#skill-ref">Skill</a></td>
+                <td><a class="category-link" href="/categories.html#tool-ref">Tool</a></td>
             </tr>
             <tr>
                 <td>Tags</td>
